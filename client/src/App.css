@@ -213,7 +213,7 @@ nav li a {
   }
       
 
-@media only screen and (max-width : 450px) {
+@media only screen and (max-width : 600px) {
     #prelogin-logo {
         margin-left: 2%;
         margin-top: 40%;
@@ -258,6 +258,38 @@ nav li a {
         background-color: black;
         border: 10px solid black
     }
+
+    .post-form-container {
+        border: black 1px solid;
+        margin-bottom: 10%;
+    }
+
+    .project-form, .post-form {
+        display: flex;
+        flex-direction: column;
+        border-radius: 5%;
+    }
+
+    .project-form-input, .post-form-input {
+        text-align: center;
+    }
+
+    .add-buttons {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-button {
+        margin: auto;
+    }
+
+    .user-icon {
+        float: left;
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
 
 
 

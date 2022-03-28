@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
-import { FaHome } from 'react-icons/fa'
 import { MdNotificationsActive } from 'react-icons/md'
 import { BsSearch } from 'react-icons/bs'
 import logo from '../Twiddle-Wakka.png'
@@ -12,7 +11,7 @@ function Navbar() {
         <img src={logo} alt='logo' id='logo'/>
         <div id="search-container">
             <form id="search-form">
-                <label for="search-bar"></label>
+                <label htmlFor="search-bar"></label>
                 <BsSearch id='search-icon'/>
                 <input type="text" id="search-bar" placeholder="Search posts..." />
             </form>

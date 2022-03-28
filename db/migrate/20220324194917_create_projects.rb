@@ -1,10 +1,10 @@
 class CreateProjects < ActiveRecord::Migration[6.1]
   def change
     create_table :projects do |t|
-      t.string :image_url
-      t.string :github
+      t.text :image_url
+      t.text :github
       t.string :title
-      t.string :description
+      t.text :description
 
       t.timestamps
     end

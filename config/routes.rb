@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show, :create]
   resources :technologies
   resources :projects, only: [:index, :show]
-  resources :users, only: [:index, :show] do
+  resources :users do
     get "/feed", to: "users#feed"
   end
   # Routing logic: fallback requests for React Router.

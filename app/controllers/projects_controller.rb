@@ -26,4 +26,8 @@ class ProjectsController < ApplicationController
     def render_not_found_res
         render json: { error: "Project not found" }, status: :not_found
     end
+
+    def render_invalid_res(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
 end

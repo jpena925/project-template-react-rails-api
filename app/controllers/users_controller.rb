@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_res
+    rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_res
+
     def index
         users = User.all
         render json: users, status: :ok
@@ -8,6 +10,19 @@ class UsersController < ApplicationController
     def show
         user = User.find(params[:id])
         render json: user, status: :ok, serializer: UserShowSerializer
+    end
+
+    def update
+        user = User.find(params[:id])
+        user.update!(user_params)
+        render json: user, status: :accepted
+    end
+
+    # stretch goal
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        head :no_content
     end
 
     def feed
@@ -21,7 +36,15 @@ class UsersController < ApplicationController
 
     private
 
+    def user_params
+        params.permit(:email, :password, :bio, :picture, :name, :github, :linkedin, :blog)
+    end
+
     def render_not_found_res
         render json: { error: "User not found" }, status: :not_found
+    end
+
+    def render_invalid_res(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 end

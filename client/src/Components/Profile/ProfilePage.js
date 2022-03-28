@@ -6,10 +6,12 @@ import PostForm from '../PostForm.js'
 function ProfilePage() {
   return (
     <>
-    <div>Profile</div>
+    <div></div>
     <PostForm />
-    <UserDisplay />
-    <ProfileFeed />
+    <div className='split'>
+      <ProfileFeed />
+      <UserDisplay />
+    </div>
     </>
   )
 }

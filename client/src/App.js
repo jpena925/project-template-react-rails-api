@@ -12,7 +12,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <h1>TWIDDLE WAKKA</h1>
       <Routes>
         <Route exact path="/" element={<PreLogin />} />
         <Route exact path="/login" element={<Login />} />

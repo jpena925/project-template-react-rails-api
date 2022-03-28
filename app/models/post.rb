@@ -3,5 +3,5 @@ class Post < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  validates :text, presence: true, length: {in: 1..50}
+  validates :text, presence: true
 end

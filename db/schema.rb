@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2022_03_24_205501) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "text"
+    t.text "text"
     t.string "commentable_type"
     t.integer "commentable_id"
     t.integer "user_id", null: false
@@ -32,10 +32,10 @@ ActiveRecord::Schema.define(version: 2022_03_24_205501) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "image_url"
-    t.string "github"
+    t.text "image_url"
+    t.text "github"
     t.string "title"
-    t.string "description"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(version: 2022_03_24_205501) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.string "bio"
-    t.string "picture"
+    t.text "bio"
+    t.text "picture"
     t.string "name"
-    t.string "github"
-    t.string "linkedin"
-    t.string "blog"
+    t.text "github"
+    t.text "linkedin"
+    t.text "blog"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

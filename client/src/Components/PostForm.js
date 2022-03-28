@@ -2,7 +2,7 @@ import React from 'react'
 
 function PostForm() {
   return (
-    <div>PostForm</div>
+    <div></div>
   )
 }
 

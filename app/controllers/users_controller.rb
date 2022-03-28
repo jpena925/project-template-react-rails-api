@@ -6,10 +6,23 @@ class UsersController < ApplicationController
         users = User.all
         render json: users, status: :ok
     end
-
-    def show
-        user = User.find(params[:id])
-        render json: user, status: :ok, serializer: UserShowSerializer
+  
+    def show 
+        user = User.find_by(id: session[:user_id])
+        if user 
+            render json: user, status: :ok, serializer: UserShowSerializer
+        else 
+            render json: { error: "Not authorized" }, status: :unauthorized
+        end
+    end
+  
+    def create 
+        user = User.create(user_params)
+        if user.valid? 
+            render json: user, status: :created 
+        else 
+            render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     def update
@@ -37,7 +50,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:email, :password, :bio, :picture, :name, :github, :linkedin, :blog)
+        params.permit(:email, :password, :password_confirmation, :bio, :picture, :name, :github, :linkedin, :blog)
     end
 
     def render_not_found_res

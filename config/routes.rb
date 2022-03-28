@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  resources :user_projects
+  resources :user_projects, only: [:index, :show, :create]
   resources :comments
   resources :relationships
-  resources :posts
+  resources :posts, only: [:index, :show, :create]
   resources :technologies
-  resources :projects
-  resources :users
 
+  resources :projects, only: [:index, :show]
+  resources :users do
+    get "/feed", to: "users#feed"
+  end
+  
   post '/login', to: 'sessions#create'
   get '/me', to: 'users#show'
   delete '/logout', to: 'sessions#destroy'

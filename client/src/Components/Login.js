@@ -35,6 +35,7 @@ function Login() {
       .then((newUser) => console.log(newUser)) //change console.log here to do something upon logged on
   }
 
+
   return (
     <>
     <hr className="blockline"></hr>

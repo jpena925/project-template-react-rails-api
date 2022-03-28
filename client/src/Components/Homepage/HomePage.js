@@ -5,8 +5,10 @@ import PostForm from '../PostForm.js'
 function HomePage() {
   return (
     <>
-    <div>Homepage</div>
+    <div>Welcome USERNAME!</div>
     <PostForm />
+    <button type="button" className="toggle-btn">Following</button>
+    <button type="button" className="toggle-btn">Discover</button>
     <Feed />
     </>
   )

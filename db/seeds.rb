@@ -25,12 +25,13 @@ Project.create(image_url: './resources/ACNHub.gif',
 UserProject.create(user_id: 1, project_id: 1)
 UserProject.create(user_id: 2, project_id: 1)
 
-Post.create(title: "Hello World!", text: 'The T has been spilt.', user_id: 1)
-Post.create(title: "React Context vs. Containment", text: 'https://dev.to/adelinealmanzar/react-context-vs-containment-319g', user_id: 2)
-Post.create(title: "Cool Title.", text: 'Ummmmmmm, does this work?', user_id: 1)
+Post.create(text: 'The T has been spilt.', user_id: 1)
+Post.create(text: 'https://dev.to/adelinealmanzar/react-context-vs-containment-319g', user_id: 2)
+Post.create(text: 'Ummmmmmm, does this work?', user_id: 1)
 
 
 Relationship.create(follower_id: 2, followee_id: 1)
+Relationship.create(follower_id: 1, followee_id: 2)
 
 Comment.create(text: "This is my first post, y'all.", :commentable => Post.first, user_id: 1)
 Comment.create(text: 'Wow, thanks for the info!', :commentable => Post.second, user_id: 1)

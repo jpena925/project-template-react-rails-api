@@ -12,14 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2022_03_24_205501) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "comments", force: :cascade do |t|
     t.string "text"
     t.string "commentable_type"
-    t.bigint "commentable_id"
-    t.bigint "user_id", null: false
+    t.integer "commentable_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
@@ -27,9 +24,8 @@ ActiveRecord::Schema.define(version: 2022_03_24_205501) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
     t.string "text"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -53,15 +49,15 @@ ActiveRecord::Schema.define(version: 2022_03_24_205501) do
 
   create_table "technologies", force: :cascade do |t|
     t.string "name"
-    t.bigint "project_id", null: false
+    t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_technologies_on_project_id"
   end
 
   create_table "user_projects", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "project_id", null: false
+    t.integer "user_id", null: false
+    t.integer "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_user_projects_on_project_id"

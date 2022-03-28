@@ -37,63 +37,63 @@ function Login() {
 
   return (
     <>
-    <hr class="blockline"></hr>
+    <hr className="blockline"></hr>
     <img src={logo} alt="logo" id="login-logo"/>
-    <div class="forms">
+    <div className="forms">
     {showLogin ?
     <form id="login">
           <h1>Sign in to Twiddle Wakka</h1>
-          <div class="input-field">
-            <label for="email">Email</label>
+          <div className="input-field">
+            <label htmlFor="email">Email</label>
             <input 
               type="email" 
               name="email"  
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            <label for="password">Password</label> 
+            <label htmlFor="password">Password</label> 
             <input 
               type="password" 
               name="password" 
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
-            <input onClick={handleLoginSubmit} type="submit" value="Login" class="button"/>
+            <input onClick={handleLoginSubmit} type="submit" value="Login" className="button"/>
             <p>Don't have an account? <button onClick={() => setShowLogin(!showLogin)}>Sign up</button></p>
           </div>
       </form> :
       <form id="signup">
           <h1>Join Twiddle Wakka today</h1>
-          <div class="input-field">
-          <label for="name">Name</label> 
+          <div className="input-field">
+          <label htmlFor="name">Name</label> 
             <input 
               type="text" 
               name="name"  
               value={name}
               onChange={e => setName(e.target.value)}
             />
-            <label for="email">Email</label> 
+            <label htmlFor="email">Email</label> 
             <input 
               type="text" 
               name="email"  
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
-            <label for="password">Password</label> 
+            <label htmlFor="password">Password</label> 
             <input 
               type="password" 
               name="password" 
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
-            <label for="password_confirmation">Confirm Password</label> 
+            <label htmlFor="password_confirmation">Confirm Password</label> 
             <input 
               type="password" 
               name="password_confirmation" 
               value={passwordConfirmation}
               onChange={e => setPasswordConfirmation(e.target.value)}
             />
-            <input onClick={handleSignupSubmit} type="submit" value="Sign up" class="button" />
+            <input onClick={handleSignupSubmit} type="submit" value="Sign up" className="button" />
             <p>Already have an account? <button onClick={() => setShowLogin(!showLogin)}>Log in </button></p>
           </div>
       </form>

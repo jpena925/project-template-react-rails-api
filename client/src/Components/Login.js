@@ -34,6 +34,7 @@ function Login({ onLogin }) {
         if (r.ok) {
           r.json().then((user) => onLogin(user)) 
         } else {
+          console.log(r.json())
           setShowErrorMsg(true)
           setPassword("")
         }

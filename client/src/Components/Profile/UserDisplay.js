@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import ReactDOM from "react-dom";
 import prof from '../../AF2CE28E-F83F-455C-8B20-A680A14F9624_1_105_c.jpeg'
+import { UserContext } from '../../App'
 
 function UserDisplay() {
   const [bio, setBio] = useState('')
   const [isEditBio, setIsEditBio] = useState(false)
+
+  const user = useContext(UserContext)
 
   function updateBio() {
     fetch('users' + `/id`, {
@@ -18,8 +22,6 @@ function UserDisplay() {
       .then(res => res.json())
       .then(data => console.log(data))
     }
-
-
 
   return (
     <div className='column2'>

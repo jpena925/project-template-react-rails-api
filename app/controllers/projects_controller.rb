@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    before_action :authorize 
+    # before_action :authorize 
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_res
     rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_res
 
@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
 
     def render_invalid_res(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
 
     def authorize 
         return render json: { error: "Not authorize" }, status: :unauthorized unless session.include? :user_id

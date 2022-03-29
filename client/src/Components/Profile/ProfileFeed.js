@@ -1,5 +1,6 @@
 import React from 'react'
 import ProfileFeedItem from './ProfileFeedItem'
+import PostForm from '../PostForm'
 
 function ProfileFeed() {
 
@@ -11,6 +12,7 @@ function ProfileFeed() {
   return (
     <>
     <div className='column1'>
+      <PostForm />
       {data.map(image => (
         <ProfileFeedItem image={image}/>
       ))}

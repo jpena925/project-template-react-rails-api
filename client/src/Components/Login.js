@@ -2,8 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import logo from '../logo.svg'
 
-function Login() {
+function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true)
+  const [showErrorMsg, setShowErrorMsg] = useState(false)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState('')
@@ -11,28 +12,33 @@ function Login() {
 
   function handleLoginSubmit(e) {
     e.preventDefault() 
-    fetch('/login', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((r) => r.json())
-      .then((user) => console.log(`${user.name} is logged in!`)) //change console.log here to do something upon logged on
+    const userObj = { email, password }
+    submitFetch(userObj, '/login')
   }
 
   function handleSignupSubmit(e) {
-    e.preventDefault() 
-    fetch('/users', {
+    e.preventDefault()
+    const userObj = { name, email, password, password_confirmation: passwordConfirmation }
+    submitFetch(userObj, '/users')
+  }
+
+  function submitFetch(userObj, routeString) { 
+    fetch(routeString, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, email, password, password_confirmation: passwordConfirmation }),
+      body: JSON.stringify(userObj),
     })
-      .then((r) => r.json())
-      .then((newUser) => console.log(newUser)) //change console.log here to do something upon logged on
+      .then(r => {
+        if (r.ok) {
+          r.json().then((user) => onLogin(user)) 
+        } else {
+          console.log(r.json())
+          setShowErrorMsg(true)
+          setPassword("")
+        }
+      }) 
   }
 
 
@@ -44,6 +50,7 @@ function Login() {
     {showLogin ?
     <form id="login">
           <h1>Sign in to Twiddle Wakka</h1>
+          {showErrorMsg ? <p style={{'color':'red'}}>Invalid username or password.</p> : null}
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input 
@@ -65,6 +72,7 @@ function Login() {
       </form> :
       <form id="signup">
           <h1>Join Twiddle Wakka today</h1>
+          {showErrorMsg ? <p style={{'color':'red'}}>Invalid email or password.</p> : null}
           <div className="input-field">
           <label htmlFor="name">Name</label> 
             <input 

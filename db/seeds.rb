@@ -42,5 +42,12 @@ Comment.create(text: "This is my first post, y'all.", :commentable => Post.first
 Comment.create(text: 'Wow, thanks for the info!', :commentable => Post.second, user_id: 1)
 Comment.create(text: 'Thanks for reading. :)', :commentable => Post.second, user_id: 2)
 Comment.create(text: 'Yes, it seems to be working.', :commentable => Post.third, user_id: 2)
+Comment.create(text: "Awesome Project!", :commentable => Project.first, user_id: 2)
+Comment.create(text: "WOW KING!!!!", :commentable => Project.first, user_id: 3)
+Comment.create(text: "This is so inspiring!", :commentable => Project.first, user_id: 3)
+Comment.create(text: "Why is this so tacky?", :commentable => Project.first, user_id: 4)
+Comment.create(text: "We talkin Boba?", :commentable => Post.first, user_id: 4)
+Comment.create(text: "Yesssssss TW Fam", :commentable => Post.first, user_id: 3)
+Comment.create(text: "Thanks for adding me!!!", :commentable => Post.third, user_id: 2)
 
 puts 'done seeding! 🌱🌱🌱'

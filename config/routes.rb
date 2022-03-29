@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :user_projects, only: [:index, :show, :create]
-  resources :comments
+  resources :comments, only: [:index, :show, :create, :destroy]
   resources :relationships
   resources :posts, only: [:index, :show, :create]
   resources :technologies

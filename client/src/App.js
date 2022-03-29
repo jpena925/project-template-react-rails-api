@@ -47,7 +47,7 @@ function App() {
           <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
           <Route exact path="/homepage" element={<HomePage user={user} />} />
           <Route exact path="/profilepage" element={<ProfilePage user={user} />} />
-          <Route exact path="/profilepage/:username" element={<ProfilePage user={user} />} />
+          <Route exact path="/profilepage/:id" element={<ProfilePage user={user} />} />
           <Route exact path="/projectpage/:id" element={<ProjectPage user={user} />} />  
         </Routes>
     </UserContext.Provider>

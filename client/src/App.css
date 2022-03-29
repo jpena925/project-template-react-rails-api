@@ -366,9 +366,13 @@ nav li a {
         width: 150px;
         height: 30px
     }
+
+
 }
 
-      
+.project-users {
+    margin: 5px;
+}      
 
 @media only screen and (max-width : 600px) {
     #prelogin-logo {

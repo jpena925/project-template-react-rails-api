@@ -2,6 +2,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ReactDOM from "react-dom";
 import { UserContext } from '../../App'
+import logo from '../../logo.svg'
 
 function UserDisplay() {
   const [bio, setBio] = useState('')
@@ -18,7 +19,7 @@ function UserDisplay() {
   useEffect(() => {
     fetch('/user_images/1')
     .then(res => res.json())
-    .then(data => setProfPic(data.featured_image.url))
+    .then(data => data.featured_image ? setProfPic(data.featured_image.url) : setProfPic(logo))
   }, [])
 
   useEffect(() => {

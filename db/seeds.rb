@@ -7,19 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'seeding! 🌱🌱🌱'
 
-User.create(email: "boba_queen@twiddlewakka.com", password: 'boba4lyfe', bio: 'The coolest boba addict ever.', 
+User.create(email: "rebekah@twiddlewakka.com", password: '0', bio: 'The coolest boba addict ever.', 
     name: "Rebekah", github: 'https://github.com/rebekah-zhou', linkedin: 'linkedin.com/in/rebekahzhou',
     blog: 'https://medium.com/@rebekahzhou')
 
-User.create(email: 'adi@twiddlewakka.com', password: 'password', bio: 'insert bio here', 
+User.create(email: 'adeline@twiddlewakka.com', password: '0', bio: 'insert bio here', 
     name: 'Adeline', github: 'https://github.com/adelinealmanzar', linkedin: 'https://www.linkedin.com/in/adeline-almanzar/',
     blog: 'https://dev.to/adelinealmanzar')
 
-User.create(email: 'davidsands@twiddlewakka.com', password: 'guitar', bio: "Can play guitar, but only when not sick, not out of town, or fingers aren't broken.", 
+User.create(email: 'david@twiddlewakka.com', password: '0', bio: "Can play guitar, but only when not sick, not out of town, or fingers aren't broken.", 
     name: 'David', github: 'https://github.com/', linkedin: 'https://www.linkedin.com/',
     blog: 'https://dev.to/')
 
-User.create(email: 'mr_pena@twiddlewakka.com', password: 'bassoon', bio: 'Pro tennis player. Dabbles in bassoon.', 
+User.create(email: 'jack@twiddlewakka.com', password: '0', bio: 'Pro tennis player. Dabbles in bassoon.', 
     name: 'Jack', github: 'https://github.com/', linkedin: 'https://www.linkedin.com/',
     blog: 'https://dev.to/')
 

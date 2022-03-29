@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :email
       t.string :password_digest
       t.text :bio
-      t.text :picture
+      # t.text :featured_image
       t.string :name
       t.text :github
       t.text :linkedin

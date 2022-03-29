@@ -5,6 +5,7 @@ import logo from '../logo.svg'
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true)
   const [showErrorMsg, setShowErrorMsg] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState('')
@@ -34,13 +35,18 @@ function Login({ onLogin }) {
         if (r.ok) {
           r.json().then((user) => onLogin(user)) 
         } else {
-          console.log(r.json())
+          // r.json().then(data => console.log(data))
+          r.json().then(data => setErrorMsg(() => data[routeString == '/login' ? 'error' : 'errors']))
           setShowErrorMsg(true)
           setPassword("")
         }
       }) 
   }
 
+  function handleChangeForm() {
+    setShowLogin(!showLogin)
+    setShowErrorMsg(false)
+  }
 
   return (
     <>
@@ -50,7 +56,7 @@ function Login({ onLogin }) {
     {showLogin ?
     <form id="login">
           <h1>Sign in to Twiddle Wakka</h1>
-          {showErrorMsg ? <p style={{'color':'red'}}>Invalid username or password.</p> : null}
+          {showErrorMsg ? <p style={{'color':'red'}}>{errorMsg}</p> : null}
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input 
@@ -67,12 +73,12 @@ function Login({ onLogin }) {
               onChange={e => setPassword(e.target.value)}
             />
             <input onClick={handleLoginSubmit} type="submit" value="Login" className="button"/>
-            <p>Don't have an account? <button onClick={() => setShowLogin(!showLogin)}>Sign up</button></p>
+            <p>Don't have an account? <button onClick={handleChangeForm}>Sign up</button></p>
           </div>
       </form> :
       <form id="signup">
           <h1>Join Twiddle Wakka today</h1>
-          {showErrorMsg ? <p style={{'color':'red'}}>Invalid email or password.</p> : null}
+          {showErrorMsg && errorMsg ? errorMsg.map(msg => <p style={{'color':'red'}}>{msg}</p>) : null}
           <div className="input-field">
           <label htmlFor="name">Name</label> 
             <input 
@@ -103,7 +109,7 @@ function Login({ onLogin }) {
               onChange={e => setPasswordConfirmation(e.target.value)}
             />
             <input onClick={handleSignupSubmit} type="submit" value="Sign up" className="button" />
-            <p>Already have an account? <button onClick={() => setShowLogin(!showLogin)}>Log in </button></p>
+            <p>Already have an account? <button onClick={handleChangeForm}>Log in </button></p>
           </div>
       </form>
     }

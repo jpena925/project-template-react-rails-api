@@ -1,10 +1,17 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
-import { MdNotificationsActive } from 'react-icons/md'
+import { MdNotificationsActive, MdOutlineLogout } from 'react-icons/md'
 import { BsSearch } from 'react-icons/bs'
 import logo from '../Twiddle-Wakka.png'
 
-function Navbar() {
+function Navbar({ onLogout }) {
+
+  function handleLogout() {
+    fetch('/logout', {
+      method: 'DELETE',
+    }).then(() => onLogout())
+  }
+
   return (
     <header>
       <section>
@@ -21,7 +28,7 @@ function Navbar() {
             <li className='nav-effect'><NavLink to="/homepage">Home</NavLink></li>
             <li className='nav-effect'><NavLink to="/profilepage">My Profile</NavLink></li>
             <li><MdNotificationsActive className='notification'/></li>
-            <li><button className='logout-button'>Logout</button></li>
+            <li><button onClick={handleLogout} className='logout-button'>Logout</button></li>
           </ul>
         </nav>
       </section>

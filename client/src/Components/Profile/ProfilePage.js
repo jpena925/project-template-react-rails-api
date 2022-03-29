@@ -4,6 +4,7 @@ import ProfileFeed from './ProfileFeed'
 import PostForm from '../PostForm.js'
 
 function ProfilePage() {
+  
   return (
     <>
     <div className='split'>

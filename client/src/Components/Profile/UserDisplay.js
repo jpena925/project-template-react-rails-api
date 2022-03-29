@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
 
+import React, { useState, useContext, useEffect } from 'react'
+import ReactDOM from "react-dom";
+import { UserContext } from '../../App'
 
 function UserDisplay() {
   const [bio, setBio] = useState('')
@@ -7,13 +9,12 @@ function UserDisplay() {
   const [featuredImage, setFeaturedImage] = useState(null)
   const [profPic, setProfPic] = useState(null)
   const [editProfPic, setEditProfPic] = useState(false)
-  const [user, setUser] = useState({})
+  const user = useContext(UserContext)
 
   const onImageChange = e => { 
     setFeaturedImage(e.target.files[0]);
   };
   
-
   useEffect(() => {
     fetch('/user_images/1')
     .then(res => res.json())
@@ -25,7 +26,6 @@ function UserDisplay() {
     .then(res => res.json())
     .then(data => setBio(data.bio))
   }, [])
-
 
   function updateBio() {
     fetch('/users/1', {
@@ -43,7 +43,6 @@ function UserDisplay() {
       setIsEditBio(!bio)
     }
 
-
    const handleSubmit = e => {
       e.preventDefault();
       const formData = new FormData()
@@ -60,8 +59,6 @@ function UserDisplay() {
       })
       setEditProfPic(false)
     }
-
-    
 
   return (
     <div className='column2'>

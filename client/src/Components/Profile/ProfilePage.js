@@ -7,8 +7,6 @@ function ProfilePage() {
   
   return (
     <>
-    <div></div>
-    <PostForm />
     <div className='split'>
       <ProfileFeed />
       <UserDisplay />

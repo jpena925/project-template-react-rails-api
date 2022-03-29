@@ -11,6 +11,7 @@ import Navbar from './Components/Navbar';
 
 export const UserContext = createContext()
 
+
 function App() {
   const [showNavBar, setShowNavBar] = useState(false)
   const [user, setUser] = useState(null)

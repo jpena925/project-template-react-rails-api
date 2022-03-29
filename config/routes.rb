@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users do
     get "/feed", to: "users#feed"
   end
+
+  get '/user_images/:id', to: "users#images"
   
   post '/login', to: 'sessions#create'
   get '/me', to: 'users#show_me'

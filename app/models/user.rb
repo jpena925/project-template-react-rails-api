@@ -16,4 +16,7 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :email, presence: true 
     validates :email, uniqueness: true
+
+    has_one_attached :featured_image
+
 end

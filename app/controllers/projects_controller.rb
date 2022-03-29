@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
-    #UNCOMMENT BEFORE COMMIT
-    # before_action :authorize 
+#     before_action :authorize
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_res
     rescue_from ActiveRecord::RecordInvalid, with: :render_invalid_res
 

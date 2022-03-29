@@ -1,5 +1,5 @@
 class UserShowSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :password_digest, :bio, :picture, :github, :linkedin, :blog
+  attributes :id, :email, :password_digest, :bio, :featured_image, :name, :github, :linkedin, :blog
 
   has_many :projects
   has_many :posts

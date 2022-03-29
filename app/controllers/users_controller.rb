@@ -52,13 +52,33 @@ class UsersController < ApplicationController
         head :no_content
     end
 
+    def flatten_hash(a_el, a_k=nil)
+        result = {}
+
+        a_el = a_el.as_json
+      
+        a_el.map do |k, v|
+          k = "#{a_k}.#{k}" if a_k.present?
+          result.merge!( [Hash, Array].include?( v.class ) ? flatten_hash( v, k ) : ( { k => v } ) )
+        end if a_el.is_a?( Hash )
+      
+        a_el.uniq.each_with_index do |o, i|
+          i = "#{a_k}.#{i}" if a_k.present?
+          result.merge!( [Hash, Array].include?( o.class ) ? flatten_hash( o, i ) : ( { i => o } ) )
+        end if a_el.is_a?( Array )
+      
+        result
+    end
+
     def feed
         user = User.find(params[:user_id])
-        projects = user.followees.map {|followee| followee.projects}
-        posts = user.followees.map {|followee| followee.posts}
-        arr = projects + posts
-        sorted_arr = arr.flatten.sort_by {|el| el.created_at}
-        render json: {projects_and_posts: sorted_arr.reverse }, status: :ok
+        data = user.followees.map do |followee|
+            [followee.posts, followee.projects]
+        end
+
+        flattened_arr = data.flatten
+        sorted_arr = flattened_arr.sort_by {|el| el.created_at}
+        render json: sorted_arr.reverse, status: :ok
     end
 
     private

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show]
   resources :users do
     get "/feed", to: "users#feed"
+    get "/discover", to: "users#discover"
   end
 
   get '/user_images/:id', to: "users#images"

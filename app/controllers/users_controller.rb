@@ -52,33 +52,21 @@ class UsersController < ApplicationController
         head :no_content
     end
 
-    def flatten_hash(a_el, a_k=nil)
-        result = {}
-
-        a_el = a_el.as_json
-      
-        a_el.map do |k, v|
-          k = "#{a_k}.#{k}" if a_k.present?
-          result.merge!( [Hash, Array].include?( v.class ) ? flatten_hash( v, k ) : ( { k => v } ) )
-        end if a_el.is_a?( Hash )
-      
-        a_el.uniq.each_with_index do |o, i|
-          i = "#{a_k}.#{i}" if a_k.present?
-          result.merge!( [Hash, Array].include?( o.class ) ? flatten_hash( o, i ) : ( { i => o } ) )
-        end if a_el.is_a?( Array )
-      
-        result
-    end
-
     def feed
         user = User.find(params[:user_id])
-        data = user.followees.map do |followee|
-            [followee.posts, followee.projects]
-        end
+        followee_projects = user.followees.map {|followee| [followee.posts, followee.projects]}
+        
+        feed_data = flatten_array(followee_projects)
+        render json: feed_data, status: :ok
+    end
 
-        flattened_arr = data.flatten
-        sorted_arr = flattened_arr.sort_by {|el| el.created_at}
-        render json: sorted_arr.reverse, status: :ok
+    def discover
+        user = User.find(params[:user_id])
+        discovery_users = User.all.where.not(id: user.followees.pluck(:id)).where.not(id: user.id)
+        discovery_projects = discovery_users.map {|d_user| [d_user.posts, d_user.projects]}
+        
+        discovery_data = flatten_array(discovery_projects)
+        render json: discovery_data, status: :ok
     end
 
     private
@@ -93,5 +81,11 @@ class UsersController < ApplicationController
 
     def render_invalid_res(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
+    def flatten_array(projects_arr)
+        flattened_arr = projects_arr.flatten
+        sorted_arr = flattened_arr.sort_by {|el| el.created_at}
+        sorted_arr.reverse
     end
 end

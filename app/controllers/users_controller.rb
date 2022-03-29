@@ -17,6 +17,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def images
+        user = User.all.with_attached_featured_image.find(params[:id])
+        render json: user
+    end
+
   
     def create 
         user = User.create(user_params)
@@ -52,7 +57,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:email, :password, :password_confirmation, :bio, :picture, :name, :github, :linkedin, :blog)
+        params.permit(:email, :password, :password_confirmation, :bio, :featured_image, :name, :github, :linkedin, :blog)
     end
 
     def render_not_found_res

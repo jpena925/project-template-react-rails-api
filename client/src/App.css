@@ -304,6 +304,17 @@ nav li a {
        overflow: auto;
    }
 
+   .post-card {
+    display: flex;
+    height: 100px;
+    margin: 10% 20px 0 20px;
+    background-color: #e4e4e4;
+    border-radius: 8px;
+    /* text-align: center; */
+    /* font-size: 100%; */
+    /* overflow: auto; */
+}
+
    .project-picture {
        width: 400px;
        padding: 0 20px 0 0;

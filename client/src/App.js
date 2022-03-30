@@ -4,6 +4,7 @@ import Login from './Components/Login'
 import HomePage from './Components/Homepage/HomePage'
 import ProfilePage from './Components/Profile/ProfilePage'
 import ProjectPage from './Components/Project/ProjectPage'
+import VisitingPage from './Components/Profile/VisitingPage'
 import { Routes, Route } from "react-router-dom"
 import { useNavigate } from 'react-router';
 import { useEffect, useState, createContext } from 'react'
@@ -24,6 +25,7 @@ function App() {
       if (r.ok) {
         r.json()
         .then(user => setUser(() => user))
+        setShowNavBar(true)
       }
     })
   }, [])
@@ -43,7 +45,7 @@ function App() {
 
   useEffect(() => {
     if(user) {
-    fetch('/user_images/' +`${user.id}`)
+    fetch(`/user_images/${user.id}`)
     .then(res => res.json())
     .then(data => {
       if(data.featured_image === null) {
@@ -63,7 +65,7 @@ function App() {
           <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
           <Route exact path="/homepage" element={<HomePage user={user} profPic={profPic} setProfPic={setProfPic} />} />
           <Route exact path="/profilepage" element={<ProfilePage user={user} profPic={profPic} setProfPic={setProfPic} />} />
-          <Route exact path="/profilepage/:id" element={<ProfilePage user={user} />} />
+          <Route exact path="/profilepage/:id" element={<VisitingPage user={user} profPic={profPic} setProfPic={setProfPic}/>} />
           <Route exact path="/projectpage/:id" element={<ProjectPage user={user} />} />  
         </Routes>
     </UserContext.Provider>

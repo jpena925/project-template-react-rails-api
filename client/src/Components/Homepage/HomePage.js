@@ -1,12 +1,9 @@
 
-import React, {useContext} from 'react'
+import React from 'react'
 import Feed from './Feed'
 import PostForm from '../PostForm.js'
-import { UserContext } from '../../App'
-import prof from '../../download (1).png'
 
 function HomePage({ profPic, setProfPic }) {
-  const user = useContext(UserContext)
 
 
   return (

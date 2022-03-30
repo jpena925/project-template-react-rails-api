@@ -1,6 +1,5 @@
 
 import React, { useState, useContext, useEffect } from 'react'
-import ReactDOM from "react-dom";
 import { UserContext } from '../../App'
 import prof from '../../download (1).png'
 
@@ -22,7 +21,7 @@ function UserDisplay({ profPic, setProfPic}) {
   
   useEffect(() => {
     if(user) {
-    fetch('/user_images/' +`${user.id}`)
+    fetch(`/user_images/${user.id}`)
     .then(res => res.json())
     .then(data => {
       if(data.featured_image === null) {
@@ -36,13 +35,13 @@ function UserDisplay({ profPic, setProfPic}) {
 
   useEffect(() => {
     if(user){
-    fetch('/users/' + `${user.id}`)
+    fetch(`/users/${user.id}`)
     .then(res => res.json())
     .then(data => setBio(data.bio))}
   }, [])
 
   function updateBio() {
-    fetch('/users/' + `${user.id}`, {
+    fetch(`/users/${user.id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         bio: bio,
@@ -61,7 +60,7 @@ function UserDisplay({ profPic, setProfPic}) {
       e.preventDefault();
       const formData = new FormData()
       formData.append("featured_image", featuredImage)
-      fetch('/users/' + `${user.id}`, {
+      fetch(`/users/${user.id}`, {
         method: 'PUT',
         body: formData
       })

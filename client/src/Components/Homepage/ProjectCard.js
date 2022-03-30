@@ -1,5 +1,4 @@
 import React from 'react'
-import { v4 as uuidv4 } from 'uuid';
 
 function ProjectCard({ props }) {
   return (
@@ -7,7 +6,6 @@ function ProjectCard({ props }) {
     <img src={props.image_url} alt='project' className='project-picture' />
       <div>
         <h2>{props.title}</h2>
-        {/* TODO: replace with <small>{user.name}</small> */}
         <span className="project-users">{props.user.name}</span>
         <p className='proj-p'>{props.description}</p>
         <a href={props.github}>Github</a>

@@ -8,7 +8,7 @@
 puts 'seeding! 🌱🌱🌱'
 
 User.create(email: "rebekah@twiddlewakka.com", password: '0', bio: 'The coolest boba addict ever.', 
-    name: "Rebekah", github: 'https://github.com/rebekah-zhou', linkedin: 'linkedin.com/in/rebekahzhou',
+    name: "Rebekah", github: 'https://github.com/rebekah-zhou', linkedin: 'https://www.linkedin.com/in/rebekahzhou/',
     blog: 'https://medium.com/@rebekahzhou')
 
 User.create(email: 'adeline@twiddlewakka.com', password: '0', bio: 'insert bio here', 
@@ -16,12 +16,12 @@ User.create(email: 'adeline@twiddlewakka.com', password: '0', bio: 'insert bio h
     blog: 'https://dev.to/adelinealmanzar')
 
 User.create(email: 'david@twiddlewakka.com', password: '0', bio: "Can play guitar, but only when not sick, not out of town, or fingers aren't broken.", 
-    name: 'David', github: 'https://github.com/', linkedin: 'https://www.linkedin.com/',
-    blog: 'https://dev.to/')
+    name: 'David', github: 'https://github.com/DavidMSands', linkedin: 'https://www.linkedin.com/in/david-max-sands/',
+    blog: 'https://medium.com/@davidmaxsands')
 
 User.create(email: 'jack@twiddlewakka.com', password: '0', bio: 'Pro tennis player. Dabbles in bassoon.', 
-    name: 'Jack', github: 'https://github.com/', linkedin: 'https://www.linkedin.com/',
-    blog: 'https://dev.to/')
+    name: 'Jack', github: 'https://github.com/jpena925', linkedin: 'https://www.linkedin.com/in/jackpena/',
+    blog: 'https://medium.com/@jack_pena')
 
 
 Project.create(image_url: 'https://ibb.co/SQGMXVG', 

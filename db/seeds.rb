@@ -8,7 +8,7 @@
 puts 'seeding! 🌱🌱🌱'
 
 User.create(email: "rebekah@twiddlewakka.com", password: '0', bio: 'The coolest boba addict ever.', 
-    name: "Rebekah", github: 'https://github.com/rebekah-zhou', linkedin: 'linkedin.com/in/rebekahzhou',
+    name: "Rebekah", github: 'https://github.com/rebekah-zhou', linkedin: 'https://www.linkedin.com/in/rebekahzhou/',
     blog: 'https://medium.com/@rebekahzhou')
 
 User.create(email: 'adeline@twiddlewakka.com', password: '0', bio: 'insert bio here', 
@@ -16,20 +16,56 @@ User.create(email: 'adeline@twiddlewakka.com', password: '0', bio: 'insert bio h
     blog: 'https://dev.to/adelinealmanzar')
 
 User.create(email: 'david@twiddlewakka.com', password: '0', bio: "Can play guitar, but only when not sick, not out of town, or fingers aren't broken.", 
-    name: 'David', github: 'https://github.com/', linkedin: 'https://www.linkedin.com/',
-    blog: 'https://dev.to/')
+    name: 'David', github: 'https://github.com/DavidMSands', linkedin: 'https://www.linkedin.com/in/david-max-sands/',
+    blog: 'https://medium.com/@davidmaxsands')
 
 User.create(email: 'jack@twiddlewakka.com', password: '0', bio: 'Pro tennis player. Dabbles in bassoon.', 
-    name: 'Jack', github: 'https://github.com/', linkedin: 'https://www.linkedin.com/',
-    blog: 'https://dev.to/')
+    name: 'Jack', github: 'https://github.com/jpena925', linkedin: 'https://www.linkedin.com/in/jackpena/',
+    blog: 'https://medium.com/@jack_pena')
 
-
-Project.create(image_url: 'https://ibb.co/SQGMXVG', 
+Project.create(image_url: 'https://i.ibb.co/RhdspQd/Screen-Shot-2022-03-29-at-3-22-17-PM.png', 
     github: 'https://github.com/rebekah-zhou/animalcrossinghub',
     title: 'ACHub', 
     description: 'A web app featuring villagers, fossils, and critters from Animal Crossing New Horizons.',
     user_id: 1
 )
+
+Project.create(image_url: 'https://i.ibb.co/RhdspQd/Screen-Shot-2022-03-29-at-3-22-17-PM.png', 
+    github: 'https://github.com/rebekah-zhou/animalcrossinghub',
+    title: 'ACHub', 
+    description: 'A web app featuring villagers, fossils, and critters from Animal Crossing New Horizons.',
+    user_id: 2
+)
+
+Project.create(image_url: 'https://i.ibb.co/WKVQZsB/coffeetycoon.png', 
+    github: 'https://github.com/jpena925/coffee-tycoon-frontend',
+    title: 'Coffee Tycoon', 
+    description: 'A coffee/tea shop simulator web based game. ',
+    user_id: 1
+)
+
+Project.create(image_url: 'https://i.ibb.co/WKVQZsB/coffeetycoon.png', 
+    github: 'https://github.com/jpena925/coffee-tycoon-frontend',
+    title: 'Coffee Tycoon', 
+    description: 'A coffee/tea shop simulator web based game. Check it out here:',
+    user_id: 3
+)
+
+Project.create(image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Wordle_196_example.svg/1200px-Wordle_196_example.svg.png', 
+    github: 'https://github.com/DavidMSands/codle-frontend',
+    title: 'Codle', 
+    description: 'Codle is a web based game built in Javascript React with a Ruby Sinatra SQLite3 database backend. Gameplay is just like other Word (Wordle) type games. Guess the letters, get hints from the colors, guess in 6 tries and share your results.',
+    user_id: 2
+)
+
+Project.create(image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Wordle_196_example.svg/1200px-Wordle_196_example.svg.png', 
+    github: 'https://github.com/DavidMSands/codle-frontend',
+    title: 'Codle', 
+    description: 'Codle is a web based game built in Javascript React with a Ruby Sinatra SQLite3 database backend. Gameplay is just like other Word (Wordle) type games. Guess the letters, get hints from the colors, guess in 6 tries and share your results.',
+    user_id: 4
+)
+
+Technology.create()
 
 # UserProject.create(user_id: 1, project_id: 1)
 # UserProject.create(user_id: 2, project_id: 1)
@@ -43,8 +79,8 @@ Post.create(text: 'Ummmmmmm, does this work?', user_id: 4)
 
 Relationship.create(follower_id: 2, followee_id: 1)
 Relationship.create(follower_id: 1, followee_id: 2)
-Relationship.create(follower_id: 2, followee_id: 3)
-Relationship.create(follower_id: 2, followee_id: 4)
+# Relationship.create(follower_id: 2, followee_id: 3)
+# Relationship.create(follower_id: 2, followee_id: 4)
 
 Comment.create(text: "This is my first post, y'all.", :commentable => Post.first, user_id: 1)
 Comment.create(text: 'Wow, thanks for the info!', :commentable => Post.second, user_id: 1)

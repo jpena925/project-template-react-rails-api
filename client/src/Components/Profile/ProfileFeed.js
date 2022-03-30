@@ -1,23 +1,33 @@
-import React from 'react'
-import ProfileFeedItem from './ProfileFeedItem'
+import React, { useState } from 'react'
+import MyProject from './MyProject'
+import MyPost from './MyPost'
 import PostForm from '../PostForm'
+import { UserContext } from '../../App'
 
-function ProfileFeed({ profPic }) {
+function ProfileFeed({ profPic}) {
+  const [projectsOrPosts, setProjectsOrPosts] = useState("projects")
 
-  const data = [
-    'https://i.pinimg.com/originals/e9/e6/d4/e9e6d42ae3c5168a7562368741539424.jpg',
-    'https://assets.hongkiat.com/uploads/beautiful-government-websites/01.jpg',
-    'https://s3.envato.com/files/224287041/screenshotpicts/00_preview.jpg'
-  ]
+  // const curr_user = useContext(UserContext)
+  // const params = useParams()
+  // const [data, setData] = useState(null)
+
+  // const userID = Object.keys(params).length === 0 ? curr_user?.id : params.id
+  
+  // useEffect(() => {
+  //   fetch(`/users/${userID}`)
+  //   .then(res => res.json())
+  //   .then(data => setData([data.posts, data.projects]))
+  // }, [])
+
+  // const dataMap = data ? data.flat().map(image => (<ProfileFeedItem image={image}/>)) : null
   return (
-    <>
     <div className='column1'>
       <PostForm profPic={profPic} />
-      {data.map(image => (
-        <ProfileFeedItem image={image}/>
-      ))}
+      {/* TODO: change "feed-btns" classname to be more generic (in HomePage too) */}
+      <button type="button" className="feed-btns" onClick={() => setProjectsOrPosts("projects")}>My Projects</button>
+      <button type="button" className="feed-btns" onClick={() => setProjectsOrPosts("posts")}>My Posts</button>
+      {projectsOrPosts == "projects" ? <MyProject /> : <MyPost />}
     </div>
-    </>
   )
 }
 

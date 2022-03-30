@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
-import { MdNotificationsActive, MdOutlineLogout } from 'react-icons/md'
+import { MdNotificationsActive } from 'react-icons/md'
 import { BsSearch } from 'react-icons/bs'
 import logo from '../Twiddle-Wakka.png'
 

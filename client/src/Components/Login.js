@@ -41,7 +41,7 @@ function Login({ onLogin }) {
           r.json().then((user) => onLogin(user)) 
         } else {
           // r.json().then(data => console.log(data))
-          r.json().then(data => setErrorMsg(() => data[routeString == '/login' ? 'error' : 'errors']))
+          r.json().then(data => setErrorMsg((errorMsg) => data[routeString === '/login' ? 'error' : 'errors']))
           setShowErrorMsg(true)
           setPassword("")
         }
@@ -85,7 +85,7 @@ function Login({ onLogin }) {
                   className='field'
                 /><br/>
                 <input onClick={handleLoginSubmit} type="submit" value="Login" className="button"/>
-                <p onClick={() => setShowLogin(!showLogin)}>Don't have an account?</p>
+                <p onClick={() => handleChangeForm()}>Don't have an account?</p>
               </div>
           </form> :
           <form id="signup">

@@ -3,10 +3,12 @@ import Comment from '../Cards/Comment'
 import PostCard from '../Cards/PostCard';
 import ProjectCard from '../Cards/ProjectCard';
 
+
 function ProfileFeedItem({ props }) {
   const [showComments, setShowComments] = useState(false)
+ 
 
-  const renderComments = props.comments.map(comment => (
+  const renderComments = props.comments?.map(comment => (
         <Comment 
         className='comment-box'
         key={comment.id} 
@@ -19,7 +21,7 @@ function ProfileFeedItem({ props }) {
 
   return (
     <div>
-        {props.github ? <ProjectCard props={props}/> : <PostCard props={props}/>}
+        {props.github ? <ProjectCard props={props} /> : <PostCard props={props} />}
         <button onClick={() => setShowComments(!showComments)}>Comment</button>
         {showComments ? <input type='text' placeholder='Make a comment!'/> : null}
         {showComments ? renderComments : null}

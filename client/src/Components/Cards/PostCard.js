@@ -5,12 +5,13 @@ import { UserContext } from '../../App'
 function PostCard({ props }) {
   const user = useContext(UserContext)
 
+
+  console.log(user)
   return (
     <div className='post-card' >
         <h4>{props.text}</h4>
-        {props.user ? <Link to={`/profilepage/${props.user.id}`}>{props.user.name}</Link> : <h4 className="self-user-name">{user.name}</h4>}
+        {props.user ? <Link to={`/profilepage/${props.user.id}`}>{props.user.name}</Link> : null}
     </div>
   )
 }
-
 export default PostCard

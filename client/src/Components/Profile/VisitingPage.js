@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import prof from '../../download (1).png'
-import ProfileFeed from './ProfileFeed'
+import VisitingFeed from './VisitingFeed'
 
 function VisitingPage() {
     const params = useParams().id
@@ -30,7 +30,7 @@ function VisitingPage() {
   
     return (
     <div className='split'>
-    <ProfileFeed profPic={profPic} />
+    <VisitingFeed profPic={profPic} />
       <div className='column2'>
         <div className='name-pic'>
           <img src={profPic} alt='avatar' id='avatar'/>

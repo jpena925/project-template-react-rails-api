@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { MdNotificationsActive } from 'react-icons/md'
 import { BsSearch } from 'react-icons/bs'
 import logo from '../Twiddle-Wakka.png'
+import Search from './Search.js'
 
 function Navbar({ onLogout }) {
   const navigate = useNavigate();
@@ -14,17 +15,17 @@ function Navbar({ onLogout }) {
     navigate('/login')
   }
 
+
+  function handleSubmitSearch(e){
+    e.preventDefault()
+    console.log(e.target.lastChild.value)
+  }
+
   return (
     <header>
       <section>
         <img src={logo} alt='logo' id='logo'/>
-        <div id="search-container" >
-            <form id="search-form" className='input-field'>
-                <label htmlFor="search-bar"></label>
-                <i className='icon'><BsSearch /></i>
-                <input type="text"  placeholder="Search posts..." className='field2' />
-            </form>
-        </div>
+        <Search />
         <nav>
           <ul className='nav-links'>
             <li className='nav-effect'><NavLink to="/homepage">Home</NavLink></li>

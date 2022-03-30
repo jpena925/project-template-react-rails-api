@@ -25,11 +25,15 @@ function App() {
       if (r.ok) {
         r.json()
         .then(user => setUser(() => user))
-        setShowNavBar(true)
       }
-    })
+    }) 
   }, [])
-  
+
+  useEffect(() =>  {
+    if (user) {
+      setShowNavBar(true)
+    }
+  }, [user])
 
   function handleLogin(user) {
     setShowNavBar(true)

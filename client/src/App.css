@@ -1,5 +1,6 @@
 :root {
     --accent-clr: #ffde59;
+    --color: 255, 222, 89;
 }
 
 /* ===========
@@ -61,6 +62,7 @@ nav li {
     overflow: hidden;
     transition: .3s;
     font-size: 1.1rem;
+    color: #6b7270;
 }
 
 nav li:hover {
@@ -69,7 +71,7 @@ nav li:hover {
 
 nav li a {
     text-decoration: none;
-    color: rgb(32, 32, 32);
+    color: #6b7270;
 }
 
 .nav-effect::before {
@@ -278,6 +280,10 @@ nav li a {
    #links a { 
        text-decoration: none;
        color: black;
+   }
+
+   #links-ul li {
+       list-style: none;
    }
 
    #links a:hover, .bio-btns p:hover, #edit-prof:hover {
@@ -628,6 +634,11 @@ nav li a {
     color: rgb(96, 96, 96);
 }
 
+.input-field p:hover {
+    cursor: pointer;
+    color: var(--accent-clr);
+}
+
 .field:focus {
     outline-color: var(--accent-clr);
 }
@@ -639,6 +650,16 @@ nav li a {
 }
 
 .field {
+    margin-top: 10px;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50px;
+    border: none;
+    background-color: #d6d5d551;
+}
+
+.field2 {
     margin-top: 10px;
     width: 200px;
     padding: 10px;
@@ -716,3 +737,75 @@ nav li a {
     90%	{ filter: drop-shadow(0 0 2px  var(--accent-clr));}
     100%{ filter: drop-shadow(0 0 0px  var(--accent-clr));}
   }
+
+#project-display {
+    padding-top: 25px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+#project-display > img {
+    max-width: 350px;
+    padding: 10px 10px;
+}
+
+#project-display > p {
+    max-width: 500px;
+    text-align: center;
+}
+
+.project-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+.project-header span {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.project-header img {
+    width: auto;
+    height: 25px;
+}
+
+/* #fork-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+} */
+
+#fork-links a {
+    padding: 0px 10px;
+}
+
+#tech-tags span {
+    margin: 0px 10px;
+    padding: 0px 5px;
+    background-color: rgba(var(--color), 0.5);
+    color: rgb(114, 114, 114);
+    border-radius: 20%;
+}
+
+#comment {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-header {
+    display: flex;
+    flex-direction: horizontal;
+    justify-content: flex-start;
+}
+
+.comment-header a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+

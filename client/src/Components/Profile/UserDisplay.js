@@ -14,8 +14,6 @@ function UserDisplay({ profPic, setProfPic}) {
   const [editProfPic, setEditProfPic] = useState(false)
   const user = useContext(UserContext)
 
-  console.log(bio)
-
   const onImageChange = e => { 
     setFeaturedImage(e.target.files[0]);
   };

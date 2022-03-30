@@ -43,8 +43,8 @@ Post.create(text: 'Ummmmmmm, does this work?', user_id: 4)
 
 Relationship.create(follower_id: 2, followee_id: 1)
 Relationship.create(follower_id: 1, followee_id: 2)
-Relationship.create(follower_id: 2, followee_id: 3)
-Relationship.create(follower_id: 2, followee_id: 4)
+# Relationship.create(follower_id: 2, followee_id: 3)
+# Relationship.create(follower_id: 2, followee_id: 4)
 
 Comment.create(text: "This is my first post, y'all.", :commentable => Post.first, user_id: 1)
 Comment.create(text: 'Wow, thanks for the info!', :commentable => Post.second, user_id: 1)

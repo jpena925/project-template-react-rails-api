@@ -3,24 +3,22 @@ import FeedItem from './FeedItem'
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../../App'
 
-function Feed() {
-  const [feed, setFeed] = useState(null)
+function Discover() {
+  const [discover, setDiscover] = useState(null)
   const user = useContext(UserContext)
 
   useEffect(() => {
     if(user){
-    fetch(`/users/${user.id}/feed`)
+    fetch(`/users/${user.id}/discover`)
     .then(res => res.json())
-    .then(data => setFeed(data))}
+    .then(data => setDiscover(data))}
   }, [user])
 
- 
   return (
     <div>
-    {feed ? feed.map(item => <FeedItem key={uuidv4()} props={item} />) : null}
+       {discover ? discover.map(item => <FeedItem key={uuidv4()} props={item} />) : null} 
     </div>
   )
 }
 
-export default Feed
-
+export default Discover

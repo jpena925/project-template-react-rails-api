@@ -30,7 +30,6 @@ function UserDisplay({ profPic, setProfPic}) {
     })}
   },[])
 
-
   useEffect(() => {
     if(user){
     fetch(`/users/${user.id}`)

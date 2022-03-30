@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import MyProject from './MyProject'
 import MyPost from './MyPost'
 import PostForm from '../PostForm'
-import { UserContext } from '../../App'
 
 function ProfileFeed({ profPic}) {
   const [projectsOrPosts, setProjectsOrPosts] = useState("projects")

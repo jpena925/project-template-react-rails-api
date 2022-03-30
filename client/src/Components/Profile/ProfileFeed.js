@@ -2,7 +2,7 @@ import React from 'react'
 import ProfileFeedItem from './ProfileFeedItem'
 import PostForm from '../PostForm'
 
-function ProfileFeed() {
+function ProfileFeed({ profPic }) {
 
   const data = [
     'https://i.pinimg.com/originals/e9/e6/d4/e9e6d42ae3c5168a7562368741539424.jpg',
@@ -12,7 +12,7 @@ function ProfileFeed() {
   return (
     <>
     <div className='column1'>
-      <PostForm />
+      <PostForm profPic={profPic} />
       {data.map(image => (
         <ProfileFeedItem image={image}/>
       ))}

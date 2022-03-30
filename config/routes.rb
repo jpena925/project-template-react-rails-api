@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show, :create]
   resources :technologies
 
-  resources :projects, only: [:index, :show]
+  resources :projects, only: [:index, :show, :create]
   resources :users do
     get "/feed", to: "users#feed"
     get "/discover", to: "users#discover"

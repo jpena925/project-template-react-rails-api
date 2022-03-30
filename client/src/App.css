@@ -404,24 +404,22 @@ nav li a {
     }
 
     #login-logo {
-        width: 55%;
-        height: 55%;
-        position: absolute;
-        top: -30px;
-        left:30px;
+        width: 70%;
+        position: fixed;
+        
     }
 
-    .forms {
+    /* .forms {
         text-align: center;
         margin-top: 20%;
         margin-left: 20%;
         margin-right: 20%
-    }
+    } */
 
-    .input-field {
+    /* .input-field {
         display: flex;
         flex-direction: column
-    }
+    } */
 
     .blockline {
         margin-top: 30%;
@@ -560,3 +558,157 @@ nav li a {
     color: #666;
   }
 
+  /* ===========
+   login styling 
+   ============= */
+
+
+
+#login-container {
+    max-width: 1500px;
+    margin: auto;
+    text-align: center;
+}
+
+#login-logo {
+    max-width: 400px;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    animation: slide 550ms;
+    animation-iteration-count: 1;
+    transform: translate(-45%, -90%)
+}
+
+@keyframes slide {
+    0% { transform: translate(-260%, -90%); }
+    5% { transform: translate(-250%, -90%); }
+    10% { transform: translate(-240%, -90%); }
+    15% { transform: translate(-230%, -90%); }
+    20% { transform: translate(-220%, -90%); }
+    25% { transform: translate(-210%, -90%); }
+    30% { transform: translate(-200%, -90%); }
+    35% { transform: translate(-190%, -90%); }
+    40% { transform: translate(-180%, -90%); }
+    45% { transform: translate(-170%, -90%); }
+    50% { transform: translate(-160%, -90%); }
+    55% { transform: translate(-150%, -90%); }
+    60% { transform: translate(-140%, -90%); }
+    65% { transform: translate(-130%, -90%); }
+    70% { transform: translate(-120%, -90%); }
+    75% { transform: translate(-110%, -90%); }
+    80% { transform: translate(-100%, -90%); }
+    85% { transform: translate(-90%, -90%); }
+    90% { transform: translate(-80%, -90%); }
+    95% { transform: translate(-70%, -90%); }
+    97% { transform: translate(-50%, -90%); }
+    100% {transform: translate(-45%, -90%); }
+  }
+
+.forms {
+    position: fixed; 
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    
+}
+
+.input-field i {
+    position: absolute;
+}
+
+.input-field {
+    width: 110%;
+    margin-bottom: 10px;
+    color: rgb(96, 96, 96);
+}
+
+.field:focus {
+    outline-color: var(--accent-clr);
+}
+
+.icon {
+    padding: 20px 15px;
+    min-width: 40px;
+    color: #9e9e9e;
+}
+
+.field {
+    margin-top: 10px;
+    width: 200px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50px;
+    border: none;
+    background-color: #d6d5d551;
+}
+
+.button {
+    margin-top: 10px;
+    width: 220px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50px;
+    border: solid .5px #ffde59;
+    background-color: var(--accent-clr);
+    color: #666
+}
+
+.button:hover {
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+#prelogin-logo {
+    position: fixed; 
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+/* @keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+} */
+
+#prelogin-logo-img {
+    max-width: 400px;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    animation: 5s fadeIn;
+    animation-fill-mode: forwards;
+    transform: translate(-45%, -90%);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%	{ filter: drop-shadow(0 0 0px var(--accent-clr));}
+    10%	{ filter: drop-shadow(0 0 2px  var(--accent-clr));}
+    20%	{ filter: drop-shadow(0 0 4px  var(--accent-clr));}
+    30%	{ filter: drop-shadow(0 0 6px  var(--accent-clr));}
+    40%	{ filter: drop-shadow(0 0 8px  var(--accent-clr));}
+    50%	{ filter: drop-shadow(0 0 10px  var(--accent-clr));}
+    60%	{ filter: drop-shadow(0 0 8px  var(--accent-clr));}
+    70%	{ filter: drop-shadow(0 0 6px  var(--accent-clr));}
+    80%	{ filter: drop-shadow(0 0 4px  var(--accent-clr));}
+    90%	{ filter: drop-shadow(0 0 2px  var(--accent-clr));}
+    100%{ filter: drop-shadow(0 0 0px  var(--accent-clr));}
+  }

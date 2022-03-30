@@ -10,8 +10,9 @@ class User < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :posts, dependent: :destroy
 
-    has_many :user_projects, dependent: :destroy
-    has_many :projects, through: :user_projects
+    # has_many :user_projects, dependent: :destroy
+    # has_many :projects, through: :user_projects
+    has_many :projects, dependent: :destroy
 
     validates :name, presence: true
     validates :email, presence: true 

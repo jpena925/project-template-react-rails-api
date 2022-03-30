@@ -14,14 +14,14 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        post = Post.create!(post_params)
+        post = Project.create!(project_params)
         render json: post, status: :created
     end
 
     private
 
     def project_params
-        params.permit(:image_url, :github, :title, :description, :users)
+        params.permit(:image_url, :github, :title, :description, :users, :user_id)
     end
 
     def render_not_found_res

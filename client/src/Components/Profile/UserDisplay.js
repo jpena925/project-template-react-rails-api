@@ -40,6 +40,7 @@ function UserDisplay({ profPic, setProfPic}) {
     })}
   },[])
 
+
   useEffect(() => {
     if(user) {
       fetch(`/relationships/${user.id}`)

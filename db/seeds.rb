@@ -65,7 +65,19 @@ Project.create(image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/
     user_id: 4
 )
 
-Technology.create()
+Technology.create(name: 'javascript', project_id: 1)
+Technology.create(name: 'javascript', project_id: 2)
+Technology.create(name: 'reactjs', project_id: 3)
+Technology.create(name: 'reactjs', project_id: 4)
+Technology.create(name: 'reactjs', project_id: 5)
+Technology.create(name: 'reactjs', project_id: 6)
+Technology.create(name: 'sinatra', project_id: 3)
+Technology.create(name: 'sinatra', project_id: 4)
+Technology.create(name: 'ruby', project_id: 3)
+Technology.create(name: 'ruby', project_id: 4)
+Technology.create(name: 'ruby-on-rails', project_id: 5)
+Technology.create(name: 'ruby-on-rails', project_id: 6)
+
 
 # UserProject.create(user_id: 1, project_id: 1)
 # UserProject.create(user_id: 2, project_id: 1)

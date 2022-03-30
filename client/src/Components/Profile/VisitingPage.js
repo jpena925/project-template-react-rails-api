@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import prof from '../../download (1).png'
+import VisitingFeed from './VisitingFeed'
 import ProfileFeed from './ProfileFeed'
 import { UserContext } from '../../App'
 
@@ -75,7 +76,7 @@ function VisitingPage() {
 
     return (
     <div className='split'>
-    <ProfileFeed profPic={profPic} />
+    <VisitingFeed profPic={profPic} />
       <div className='column2'>
         <div className='name-pic'>
           <img src={profPic} alt='avatar' id='avatar'/>

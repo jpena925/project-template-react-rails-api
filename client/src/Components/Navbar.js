@@ -1,15 +1,17 @@
 import React from 'react'
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { MdNotificationsActive, MdOutlineLogout } from 'react-icons/md'
 import { BsSearch } from 'react-icons/bs'
 import logo from '../Twiddle-Wakka.png'
 
 function Navbar({ onLogout }) {
+  const navigate = useNavigate();
 
   function handleLogout() {
     fetch('/logout', {
       method: 'DELETE',
     }).then(() => onLogout())
+    navigate('/login')
   }
 
   return (

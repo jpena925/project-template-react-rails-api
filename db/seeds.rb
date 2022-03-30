@@ -23,13 +23,16 @@ User.create(email: 'mr_pena@twiddlewakka.com', password: 'bassoon', bio: 'Pro te
     name: 'Jack', github: 'https://github.com/', linkedin: 'https://www.linkedin.com/',
     blog: 'https://dev.to/')
 
-Project.create(image_url: './resources/ACNHub.gif', 
+Project.create(
+    image_url: './resources/ACNHub.gif', 
     github: 'https://github.com/rebekah-zhou/animalcrossinghub',
     title: 'ACHub', 
-    description: 'A web app featuring villagers, fossils, and critters from Animal Crossing New Horizons.')
+    description: 'A web app featuring villagers, fossils, and critters from Animal Crossing New Horizons.',
+    user_id: 1
+)
 
-UserProject.create(user_id: 1, project_id: 1)
-UserProject.create(user_id: 2, project_id: 1)
+# UserProject.create(user_id: 1, project_id: 1)
+# UserProject.create(user_id: 2, project_id: 1)
 
 Post.create(text: 'The T has been spilt.', user_id: 1)
 Post.create(text: 'https://dev.to/adelinealmanzar/react-context-vs-containment-319g', user_id: 2)

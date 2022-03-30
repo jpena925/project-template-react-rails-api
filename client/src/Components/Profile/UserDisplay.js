@@ -2,33 +2,45 @@
 import React, { useState, useContext, useEffect } from 'react'
 import ReactDOM from "react-dom";
 import { UserContext } from '../../App'
+import prof from '../../download (1).png'
 
-function UserDisplay() {
+
+function UserDisplay({ profPic, setProfPic}) {
   const [bio, setBio] = useState('')
   const [isEditBio, setIsEditBio] = useState(false)
   const [featuredImage, setFeaturedImage] = useState(null)
-  const [profPic, setProfPic] = useState(null)
+  // const [profPic, setProfPic] = useState(null)
   const [editProfPic, setEditProfPic] = useState(false)
   const user = useContext(UserContext)
+
+  console.log(bio)
 
   const onImageChange = e => { 
     setFeaturedImage(e.target.files[0]);
   };
   
   useEffect(() => {
-    fetch('/user_images/1')
+    if(user) {
+    fetch('/user_images/' +`${user.id}`)
     .then(res => res.json())
-    .then(data => setProfPic(data.featured_image.url))
-  }, [])
+    .then(data => {
+      if(data.featured_image === null) {
+        setProfPic(prof)
+      } else {
+        setProfPic(data.featured_image.url)
+      }
+    })}
+  },[])
 
   useEffect(() => {
-    fetch('/users/1')
+    if(user){
+    fetch('/users/' + `${user.id}`)
     .then(res => res.json())
-    .then(data => setBio(data.bio))
+    .then(data => setBio(data.bio))}
   }, [])
 
   function updateBio() {
-    fetch('/users/1', {
+    fetch('/users/' + `${user.id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         bio: bio,
@@ -39,7 +51,7 @@ function UserDisplay() {
       },
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => setBio(data.bio))
       setIsEditBio(!bio)
     }
 
@@ -47,7 +59,7 @@ function UserDisplay() {
       e.preventDefault();
       const formData = new FormData()
       formData.append("featured_image", featuredImage)
-      fetch('/users/1', {
+      fetch('/users/' + `${user.id}`, {
         method: 'PUT',
         body: formData
       })
@@ -64,7 +76,7 @@ function UserDisplay() {
     <div className='column2'>
       <div className='name-pic'>
         <img src={profPic} alt='avatar' id='avatar'/>
-        <p id='user-name'>David Sands</p>
+        <p id='user-name'>{user?.name}</p>
       </div>
       { editProfPic 
       ? <form onSubmit={handleSubmit} id='upload'>

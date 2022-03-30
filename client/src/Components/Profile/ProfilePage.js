@@ -3,13 +3,13 @@ import UserDisplay from './UserDisplay'
 import ProfileFeed from './ProfileFeed'
 import PostForm from '../PostForm.js'
 
-function ProfilePage() {
+function ProfilePage({ profPic, setProfPic}) {
   
   return (
     <>
     <div className='split'>
-      <ProfileFeed />
-      <UserDisplay />
+      <ProfileFeed profPic={profPic} />
+      <UserDisplay profPic={profPic} setProfPic={setProfPic} />
     </div>
     </>
   )

@@ -8,7 +8,7 @@ function ProjectCard({ props }) {
       <div>
         <h2>{props.title}</h2>
         {/* TODO: replace with <small>{user.name}</small> */}
-        {props.users.map(user => <span key={uuidv4()} className="project-users">{user.name}</span>)}
+        <span className="project-users">{props.user.name}</span>
         <p className='proj-p'>{props.description}</p>
         <a href={props.github}>Github</a>
       </div>

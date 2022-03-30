@@ -7,6 +7,7 @@ import { FaLock } from 'react-icons/fa';
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true)
   const [showErrorMsg, setShowErrorMsg] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState('')
@@ -36,13 +37,18 @@ function Login({ onLogin }) {
         if (r.ok) {
           r.json().then((user) => onLogin(user)) 
         } else {
-          console.log(r.json())
+          // r.json().then(data => console.log(data))
+          r.json().then(data => setErrorMsg(() => data[routeString == '/login' ? 'error' : 'errors']))
           setShowErrorMsg(true)
           setPassword("")
         }
       }) 
   }
 
+  function handleChangeForm() {
+    setShowLogin(!showLogin)
+    setShowErrorMsg(false)
+  }
 
   return (
     <>
@@ -118,6 +124,7 @@ function Login({ onLogin }) {
         }
         </div>
       </div>
+    
   </>
     
   )

@@ -1,18 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import FeedItem from './FeedItem'
 import { v4 as uuidv4 } from 'uuid';
+import { UserContext } from '../../App'
 
 function Feed() {
   const [feed, setFeed] = useState(null)
+  const user = useContext(UserContext)
 
-  //fetch to projects and posts for all that the user is following
+ 
+  
+  
   useEffect(() => {
-    fetch('/users/2/feed')
+    if(user){
+    fetch(`/users/${user.id}/feed`)
     .then(res => res.json())
-    .then(data => setFeed(data.projects_and_posts))
-  }, [])
+    .then(data => setFeed(data))}
+  }, [user])
 
   console.log(feed)
+
+  
   const feedMap = feed ? feed.map(post => <FeedItem key={uuidv4()} props={post} />) : null
  
   return (

@@ -5,6 +5,7 @@ import { UserContext } from '../../App'
 import prof from '../../download (1).png'
 
 
+
 function UserDisplay({ profPic, setProfPic}) {
   const [bio, setBio] = useState('')
   const [isEditBio, setIsEditBio] = useState(false)
@@ -31,6 +32,7 @@ function UserDisplay({ profPic, setProfPic}) {
       }
     })}
   },[])
+
 
   useEffect(() => {
     if(user){

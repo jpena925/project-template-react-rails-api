@@ -15,6 +15,7 @@ function UserDisplay({ profPic, setProfPic}) {
   // const [profPic, setProfPic] = useState(null)
   const [editProfPic, setEditProfPic] = useState(false)
   const [isEditLinks, setIsEditLinks] = useState(false)
+  const [followerCount, setFollowerCount] = useState()
   const user = useContext(UserContext)
   const [links, setLinks] = useState({
       linkedin: '',
@@ -39,12 +40,25 @@ function UserDisplay({ profPic, setProfPic}) {
     })}
   },[])
 
+
+  useEffect(() => {
+    if(user) {
+      fetch(`/relationships/${user.id}`)
+      .then(res => res.json())
+      .then(data => setFollowerCount(data.length)
+      )}
+  }, [user])
+
+
   useEffect(() => {
     if(user){
     fetch(`/users/${user.id}`)
     .then(res => res.json())
-    .then(data => setBio(data.bio))}
-  }, [])
+    .then(data => {
+      setBio(data.bio)
+      setLinks({...links, linkedin: data.linkedin, github: data.github, blog: data.blog })
+    })}
+  }, [user])
 
   function updateBio() {
     fetch(`/users/${user.id}`, {
@@ -113,7 +127,7 @@ function UserDisplay({ profPic, setProfPic}) {
       <p onClick={() => setEditProfPic(!editProfPic)} id='edit-prof'>Edit Image</p>
       {/* <button id='follow-btn'>Follow</button> */}
       <div id='bio'>
-        <p>69 Followers</p>
+        <p>{followerCount} Followers</p>
       </div>
       <div id='bio'>
         <h2>Bio:</h2>

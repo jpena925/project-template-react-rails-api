@@ -2,7 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import logo from '../logo.svg'
 import { BsFillPersonFill } from 'react-icons/bs';
+import { MdEmail,  } from 'react-icons/md'
 import { FaLock } from 'react-icons/fa';
+import { MdAddLink } from 'react-icons/md'
+import { BiImageAdd } from 'react-icons/bi'
 
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true)
@@ -86,39 +89,51 @@ function Login({ onLogin }) {
               </div>
           </form> :
           <form id="signup">
-              <h1>Join Twiddle Wakka today</h1>
+              {/* <h1>Join Twiddle Wakka today</h1> */}
               {showErrorMsg ? <p style={{'color':'red'}}>Invalid email or password.</p> : null}
               <div className="input-field">
-              <label htmlFor="name">Name</label>
+              <i><BsFillPersonFill className='icon' /></i>
+              <label htmlFor="name"></label>
                 <input
                   type="text"
                   name="name"
+                  placeholder='First & last name'
                   value={name}
                   onChange={e => setName(e.target.value)}
-                />
-                <label htmlFor="email">Email</label>
+                  className='field'
+                /><br/>
+                <i><MdEmail className='icon' /></i>
+                <label htmlFor="email"></label>
                 <input
                   type="text"
                   name="email"
+                  placeholder='Email'
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                />
-                <label htmlFor="password">Password</label>
+                  className='field'
+                /><br/>
+                <i><FaLock className='icon'/></i>
+                <label htmlFor="password"></label>
                 <input
                   type="password"
                   name="password"
+                  placeholder='Password'
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                />
-                <label htmlFor="password_confirmation">Confirm Password</label>
+                  className='field'
+                /><br/>
+                <i><FaLock className='icon'/></i>
+                <label htmlFor="password_confirmation"></label>
                 <input
                   type="password"
                   name="password_confirmation"
+                  placeholder='Confirm password'
                   value={passwordConfirmation}
                   onChange={e => setPasswordConfirmation(e.target.value)}
-                />
+                  className='field'
+                /><br/>
                 <input onClick={handleSignupSubmit} type="submit" value="Sign up" className="button" />
-                <p>Already have an account? <button onClick={() => setShowLogin(!showLogin)}>Log in </button></p>
+                <p onClick={() => setShowLogin(!showLogin)}>Already have an account?</p>
               </div>
           </form>
         }

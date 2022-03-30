@@ -3,6 +3,9 @@ import React, { useState, useContext, useEffect } from 'react'
 import ReactDOM from "react-dom";
 import { UserContext } from '../../App'
 import prof from '../../download (1).png'
+import { AiFillLinkedin } from 'react-icons/ai'
+import { BsGithub } from 'react-icons/bs'
+import { SiMedium } from 'react-icons/si'
 
 
 
@@ -12,7 +15,13 @@ function UserDisplay({ profPic, setProfPic}) {
   const [featuredImage, setFeaturedImage] = useState(null)
   // const [profPic, setProfPic] = useState(null)
   const [editProfPic, setEditProfPic] = useState(false)
+  const [isEditLinks, setIsEditLinks] = useState(false)
   const user = useContext(UserContext)
+  const [links, setLinks] = useState({
+      linkedin: '',
+      github: '',
+      blog: '',
+  })
 
   console.log(bio)
 
@@ -57,6 +66,24 @@ function UserDisplay({ profPic, setProfPic}) {
       setIsEditBio(!bio)
     }
 
+    function updateLinks() {
+      fetch('/users/' + `${user.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          linkedin: links.linkedin,
+          github: links.github,
+          blog: links.blog
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+          'Accept': 'application/json'
+        },
+      })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        setIsEditLinks(!isEditLinks)
+      }
+
    const handleSubmit = e => {
       e.preventDefault();
       const formData = new FormData()
@@ -85,7 +112,7 @@ function UserDisplay({ profPic, setProfPic}) {
           <input type="file" accept="image/*" multiple={false} onChange={onImageChange} /><br/>
           <input type="submit" value="Submit"></input>
         </form>
-      : null 
+      : null
       } 
       <p onClick={() => setEditProfPic(!editProfPic)} id='edit-prof'>Edit Image</p>
       {/* <button id='follow-btn'>Follow</button> */}
@@ -110,8 +137,28 @@ function UserDisplay({ profPic, setProfPic}) {
       </div>
       <div id='links'>
         <h2>My links:</h2>
-        <p><a href='https://www.linkedin.com/in/david-max-sands/'>Linkedin</a></p>
-        <p><a href='https://github.com/DavidMSands'>Github</a></p>
+        { isEditLinks
+        ? <form>
+            <i><AiFillLinkedin /></i>
+            <input type='url' name='linkedin' placeholder='Linkedin'  value={links.linkedin} onChange={(e) => setLinks({...links, linkedin: e.target.value})}/><br/>
+            <i><BsGithub /></i>
+            <input type='url' name='github' placeholder='Github'  value={links.github} onChange={(e) => setLinks({...links, github: e.target.value})}/><br/>
+            <i><SiMedium /></i>
+            <input type='url' name='blog' placeholder='Blog'  value={links.blog} onChange={(e) => setLinks({...links, blog: e.target.value})} />
+          </form>
+        : <ul id='links-ul'>
+            {links.linkedin === '' ? null : <li><AiFillLinkedin /> <a href={links.linkedin} target='_blank' >Linkedin</a></li>}
+            {links.github === '' ? null : <li><BsGithub /> <a href={links.github} target='_blank' >Github</a></li>}
+            {links.blog === '' ? null : <li><SiMedium /> <a href={links.blog} target='_blank' >Blog</a></li>}
+          </ul> 
+        }
+        { isEditLinks 
+        ? <div className='bio-btns'>
+            <p onClick={updateLinks}>Save</p>
+            <p onClick={() => setIsEditLinks(!isEditLinks)}>Cancel</p>
+          </div>
+        :  <p onClick={() => setIsEditLinks(!isEditLinks)} className='bio-btns'>Edit links</p>
+        }
       </div>
     </div>
   )

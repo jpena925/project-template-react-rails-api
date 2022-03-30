@@ -6,9 +6,6 @@ import { UserContext } from '../../App'
 function Feed() {
   const [feed, setFeed] = useState(null)
   const user = useContext(UserContext)
-
- 
-  
   
   useEffect(() => {
     if(user){

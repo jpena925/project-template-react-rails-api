@@ -24,8 +24,9 @@ function App() {
       if (r.ok) {
         r.json()
         .then(user => setUser(() => user))
+        setShowNavBar(true)
       }
-    })
+    }) 
   }, [])
   
 

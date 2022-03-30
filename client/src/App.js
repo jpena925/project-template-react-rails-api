@@ -27,7 +27,7 @@ function App() {
         .then(user => setUser(() => user))
         setShowNavBar(true)
       }
-    })
+    }) 
   }, [])
   
   function handleLogin(user) {

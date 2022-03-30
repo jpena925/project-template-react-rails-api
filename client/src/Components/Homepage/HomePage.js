@@ -9,7 +9,6 @@ function HomePage({ profPic, setProfPic }) {
 
   return (
     <>
-    <div>Welcome USERNAME!</div>
     <PostForm profPic={profPic} />
     <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("feed")}>Feed</button>
     <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("discover")}>Discover</button>

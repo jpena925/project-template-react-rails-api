@@ -7,10 +7,10 @@ class UsersController < ApplicationController
         render json: users, status: :ok
     end
   
-    def show 
-        user = User.find(params[:id]) #for not authorized wip
+    def show # should we keep both?
+        user = User.find(params[:id])
         if user 
-            render json: user, status: :ok, serializer: UserShowSerializer
+            render json: user, status: :ok, serializer: UserShowSerializer, include: ['projects.comments', 'posts.comments', 'comments', 'followees', 'followers']
         else 
             render json: { error: "Not authorized" }, status: :unauthorized
         end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     def show_me 
         user = User.find_by(id: session[:user_id])
         if user 
-            render json: user, status: :ok, serializer: UserShowSerializer
+            render json: user, status: :ok, serializer: UserShowSerializer, include: ['projects.comments', 'posts.comments', 'comments', 'followees', 'followers']
         else 
             render json: { error: "Not authorized" }, status: :unauthorized
         end

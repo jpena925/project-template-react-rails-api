@@ -6,7 +6,7 @@ import ProjectCard from '../Cards/ProjectCard';
 function FeedItem({ props }) {
   const [showComments, setShowComments] = useState(false)
 
-  const commentsMap = props.comments.map(comment => (
+  const renderComments = props.comments.map(comment => (
       <Comment 
         className='comment-box'
         key={comment.id} 
@@ -22,7 +22,7 @@ function FeedItem({ props }) {
     {props.github ? <ProjectCard props={props}/> : <PostCard props={props}/>}
     <button onClick={() => setShowComments(!showComments)}>Comment</button>
     {showComments ? <input type='text' placeholder='Make a comment!'/> : null}
-    {showComments ? commentsMap : null}
+    {showComments ? renderComments : null}
     </>
   )
 }

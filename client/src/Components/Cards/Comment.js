@@ -1,28 +1,57 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import prof from '../../download (1).png'
+import React, { useState, useContext } from 'react'
+import EachComment from './EachComment'
+import { UserContext } from '../../App'
 
-function Comment({ text, user_id, name}) {
-  const [image, setImage] = useState(prof)
+function Comment({ props }) {
+  const [newCommentText, setNewCommentText] = useState("")
+  const [newComment, setNewComment] = useState(null)
 
-  useEffect(() => {
-    fetch(`/user_images/${user_id}`)
-    .then(res => res.json())
-    .then(data => {
-      if(data.featured_image !== null) {
-        setImage(data.featured_image.url)
-      }
+  const user = useContext(UserContext)
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    const commentableType = props.github ? "Project" : "Post"
+    const commentObj = {
+        text: newCommentText,
+        commentable_type: commentableType,
+        commentable_id: props.id,
+        user_id: user.id
+    }
+
+    fetch('/comments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(commentObj)
     })
-  },[])
+    .then(r => r.json())
+    .then(commentToAppendToRender => setNewComment(commentToAppendToRender))
+  }
+
+  let commentsAfterPost;
+  if (newComment != null) {
+      commentsAfterPost = [...props.comments, newComment]
+  } else {
+      commentsAfterPost = props.comments
+  }
+
+  const renderComments = commentsAfterPost?.map(comment => (
+    <EachComment 
+      className='comment-box'
+      key={comment.id} 
+      text={comment.text} 
+      user_id={comment.user_id} 
+      name={comment.name}
+    />
+  ))
 
   return (
-    <div id='comment'>
-      <div class="comment-header">
-        <img className='user-icon' src={`${image}`} alt='Commenter'></img>
-        <Link to={`/profilepage/${user_id}`}>{name}</Link>
-      </div>
-      <p>{text}</p>
-      {user_id === '<%= Session["user_id"] %>' ? <button>Delete Comment</button> : null}
+    <div>
+      <form onSubmit={(e) => handleSubmit(e)}>
+          <input type='text' onChange={(e) => setNewCommentText(e.target.value)} placeholder='Leave a comment!'/>
+          <input type='submit' id='submit' />
+      </form>
+      {renderComments}
     </div>
   )
 }

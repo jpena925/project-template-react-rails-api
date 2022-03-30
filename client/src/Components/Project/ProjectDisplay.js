@@ -37,11 +37,7 @@ function ProjectDisplay() {
       <img src={`${project['image_url']}`} alt='Project'></img>
       <div id='tech-tags'>{project.technologies.map(tech => <span>#{tech.name}</span>)}</div>
       <p>{project.description}</p>
-      <div>
-        {project.comments.map(comment => {
-          return <Comment key={comment.id} text={comment.text} user_id={comment['user_id']} name={comment.name}/>}
-          )}
-      </div>
+      <Comment props={project} />
     </div>
   )
 }

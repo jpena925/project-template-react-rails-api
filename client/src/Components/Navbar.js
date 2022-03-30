@@ -18,11 +18,11 @@ function Navbar({ onLogout }) {
     <header>
       <section>
         <img src={logo} alt='logo' id='logo'/>
-        <div id="search-container">
-            <form id="search-form">
+        <div id="search-container" >
+            <form id="search-form" className='input-field'>
                 <label htmlFor="search-bar"></label>
-                <BsSearch id='search-icon'/>
-                <input type="text" id="search-bar" placeholder="Search posts..." />
+                <i className='icon'><BsSearch /></i>
+                <input type="text"  placeholder="Search posts..." className='field2' />
             </form>
         </div>
         <nav>

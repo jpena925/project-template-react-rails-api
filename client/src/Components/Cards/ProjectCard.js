@@ -1,14 +1,16 @@
-import React from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import React, { useContext } from 'react'
+import { UserContext } from '../../App'
+
 
 function ProjectCard({ props }) {
+  const user = useContext(UserContext)
+  
   return (
     <div className='proj-card' >
     <img src={props.image_url} alt='project' className='project-picture' />
       <div>
         <h2>{props.title}</h2>
-        {/* TODO: replace with <small>{user.name}</small> */}
-        <span className="project-users">{props.user.name}</span>
+        <span className="project-users">{props.user ? props.user.name : user.name}</span>
         <p className='proj-p'>{props.description}</p>
         <a href={props.github}>Github</a>
       </div>

@@ -313,7 +313,11 @@ nav li a {
     /* text-align: center; */
     /* font-size: 100%; */
     /* overflow: auto; */
-}
+    }
+    
+    .self-user-name {
+        padding: 20px;
+    }
 
    .project-picture {
        width: 400px;

@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Comment from '../Cards/Comment'
+import PostCard from '../Cards/PostCard';
+import ProjectCard from '../Cards/ProjectCard';
 
-function ProfileFeedItem({ image }) {
+function ProfileFeedItem({ props }) {
+  const [showComments, setShowComments] = useState(false)
+
+//   const commentsMap = props.comments.map(comment => (
+//     <Comment 
+//       className='comment-box'
+//       key={comment.id} 
+//       text={comment.text} 
+//       user_id={comment.user_id} 
+//       name={comment.name}
+//     />
+//   )
+// )
+
   return (
-    <div className='proj-card' >
-      <img src={image} alt='project' className='project-picture' />
-      <div>
-        <h2>My Project</h2>
-        <p className='proj-p'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lectus sem, aliquam eu suscipit eu, ultrices sit amet ipsum. Vestibulum at fringilla urna. Sed at ipsum id libero maximus ornare. Donec rutrum dui ipsum, elementum bibendum lectus auctor ullamcorper.</p>
-      </div>
+    <div>
+        {props.github ? <ProjectCard props={props}/> : <PostCard props={props}/>}
+        <button onClick={() => setShowComments(!showComments)}>Comment</button>
+        {showComments ? <input type='text' placeholder='Make a comment!'/> : null}
+        {/* {showComments ? commentsMap : null} */}
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Comment from './Comment'
-import PostCard from './PostCard';
-import ProjectCard from './ProjectCard';
+import Comment from '../Cards/Comment'
+import PostCard from '../Cards/PostCard';
+import ProjectCard from '../Cards/ProjectCard';
 
 function FeedItem({ props }) {
   const [showComments, setShowComments] = useState(false)
@@ -16,7 +16,6 @@ function FeedItem({ props }) {
       />
     )
   )
-
                   
   return (
     <>

@@ -23,13 +23,49 @@ User.create(email: 'jack@twiddlewakka.com', password: '0', bio: 'Pro tennis play
     name: 'Jack', github: 'https://github.com/jpena925', linkedin: 'https://www.linkedin.com/in/jackpena/',
     blog: 'https://medium.com/@jack_pena')
 
-
-Project.create(image_url: 'https://ibb.co/SQGMXVG', 
+Project.create(image_url: 'https://i.ibb.co/RhdspQd/Screen-Shot-2022-03-29-at-3-22-17-PM.png', 
     github: 'https://github.com/rebekah-zhou/animalcrossinghub',
     title: 'ACHub', 
     description: 'A web app featuring villagers, fossils, and critters from Animal Crossing New Horizons.',
     user_id: 1
 )
+
+Project.create(image_url: 'https://i.ibb.co/RhdspQd/Screen-Shot-2022-03-29-at-3-22-17-PM.png', 
+    github: 'https://github.com/rebekah-zhou/animalcrossinghub',
+    title: 'ACHub', 
+    description: 'A web app featuring villagers, fossils, and critters from Animal Crossing New Horizons.',
+    user_id: 2
+)
+
+Project.create(image_url: 'https://i.ibb.co/WKVQZsB/coffeetycoon.png', 
+    github: 'https://github.com/jpena925/coffee-tycoon-frontend',
+    title: 'Coffee Tycoon', 
+    description: 'A coffee/tea shop simulator web based game. ',
+    user_id: 1
+)
+
+Project.create(image_url: 'https://i.ibb.co/WKVQZsB/coffeetycoon.png', 
+    github: 'https://github.com/jpena925/coffee-tycoon-frontend',
+    title: 'Coffee Tycoon', 
+    description: 'A coffee/tea shop simulator web based game. Check it out here:',
+    user_id: 3
+)
+
+Project.create(image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Wordle_196_example.svg/1200px-Wordle_196_example.svg.png', 
+    github: 'https://github.com/DavidMSands/codle-frontend',
+    title: 'Codle', 
+    description: 'Codle is a web based game built in Javascript React with a Ruby Sinatra SQLite3 database backend. Gameplay is just like other Word (Wordle) type games. Guess the letters, get hints from the colors, guess in 6 tries and share your results.',
+    user_id: 2
+)
+
+Project.create(image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Wordle_196_example.svg/1200px-Wordle_196_example.svg.png', 
+    github: 'https://github.com/DavidMSands/codle-frontend',
+    title: 'Codle', 
+    description: 'Codle is a web based game built in Javascript React with a Ruby Sinatra SQLite3 database backend. Gameplay is just like other Word (Wordle) type games. Guess the letters, get hints from the colors, guess in 6 tries and share your results.',
+    user_id: 4
+)
+
+Technology.create()
 
 # UserProject.create(user_id: 1, project_id: 1)
 # UserProject.create(user_id: 2, project_id: 1)

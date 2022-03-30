@@ -30,7 +30,6 @@ function App() {
     })
   }, [])
   
-
   function handleLogin(user) {
     setShowNavBar(true)
     setUser(() => user)

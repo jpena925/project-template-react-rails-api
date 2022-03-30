@@ -716,3 +716,48 @@ nav li a {
     90%	{ filter: drop-shadow(0 0 2px  var(--accent-clr));}
     100%{ filter: drop-shadow(0 0 0px  var(--accent-clr));}
   }
+
+#project-display {
+    padding-top: 25px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+#project-display > img {
+    width: 80%;
+    height: auto;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    /* background-color: red; */
+}
+
+.horizontal span {
+    /* background-color: yellow; */
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+.horizontal img {
+    width: auto;
+    height: 25px;
+}
+
+#fork-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    /* background-color: blue; */
+    padding: 0px 50px;
+}
+
+/* #fork-links a {
+    background-color: orange;
+} */

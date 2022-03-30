@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :user_projects, only: [:index, :show, :create]
   resources :comments, only: [:index, :show, :create, :destroy]
-  resources :relationships
+  resources :relationships, only: [:create, :destroy, :show]
   resources :posts, only: [:index, :show, :create]
   resources :technologies
 
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get "/feed", to: "users#feed"
     get "/discover", to: "users#discover"
   end
+
+  get '/relationships/:follower_id,:followee_id', to: 'relationships#check_follow'
 
   get '/user_images/:id', to: "users#images"
   

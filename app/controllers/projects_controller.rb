@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        params.permit(:image_url, :github, :title, :description, :users, :user_id)
+        params.permit(:image_url, :github, :title, :description, :user_id)
     end
 
     def render_not_found_res

@@ -24,7 +24,7 @@ function Navbar({ onLogout }) {
   return (
     <header>
       <section>
-        <img src={logo} alt='logo' id='logo'/>
+      <NavLink to="/homepage"><img src={logo} alt='logo' id='logo'/></NavLink>
         <Search />
         <nav>
           <ul className='nav-links'>

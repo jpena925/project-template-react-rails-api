@@ -142,7 +142,7 @@ function UserDisplay({ profPic, setProfPic}) {
             <p onClick={updateBio}>Save</p>
             <p onClick={() => setIsEditBio(!isEditBio)}>Cancel</p>
           </div>
-        : <p onClick={() => setIsEditBio(!isEditBio)} className='bio-btns'>Edit bio</p>
+        : <p onClick={() => setIsEditBio(!isEditBio)} className='edit-bio'>Edit bio</p>
         }
       </div>
       <div id='links'>
@@ -167,7 +167,7 @@ function UserDisplay({ profPic, setProfPic}) {
             <p onClick={updateLinks}>Save</p>
             <p onClick={() => setIsEditLinks(!isEditLinks)}>Cancel</p>
           </div>
-        :  <p onClick={() => setIsEditLinks(!isEditLinks)} className='bio-btns'>Edit links</p>
+        :  <p onClick={() => setIsEditLinks(!isEditLinks)} className='edit-links'>Edit links</p>
         }
       </div>
     </div>

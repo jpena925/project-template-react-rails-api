@@ -12,6 +12,8 @@ body {
     font-weight: 400;
     font-style: normal;
     background-color: rgb(249, 249, 249);
+    height: 100vh;
+    /* font-family: 'Montserrat', sans-serif; */
 }
 
 body header {
@@ -237,9 +239,9 @@ nav li a {
    }
 
    .column2 {
-    border-left: .03rem solid rgba(111, 111, 111, 0.46);
-    margin: auto;
-    height: 100vh;
+        border-left: .03rem solid rgba(111, 111, 111, 0.46);
+        margin: auto;
+        height: 100%;
     }
 
    .name-pic {
@@ -285,9 +287,14 @@ nav li a {
 
    #links-ul li {
        list-style: none;
+       
    }
 
-   #links a:hover, .bio-btns p:hover, #edit-prof:hover {
+   #links-ul {
+        padding-left: 0;
+   }
+
+   #links a:hover, .bio-btns p:hover, #edit-prof:hover, .edit-bio:hover, .edit-links:hover {
         cursor: pointer;
         color: var(--accent-clr);
    } 
@@ -298,18 +305,9 @@ nav li a {
 
    .column1 {
        margin:  0 auto;
+       height: 100vh;
    }
 
-   .proj-card {
-       display: flex;
-       height: 260px;
-       margin: 10% 20px 0 20px;
-       background-color: #e4e4e4;
-       border-radius: 8px;
-       text-align: center;
-       font-size: 100%;
-       overflow: auto;
-   }
 
    .post-card {
     /* display: flex;
@@ -327,8 +325,8 @@ nav li a {
     }
 
    .project-picture {
-       width: 400px;
-       padding: 0 20px 0 0;
+       width: 500px;
+       
    }
 
    @media (max-width: 790px) {
@@ -345,8 +343,8 @@ nav li a {
    }
 
    .proj-p {
-       max-width: 400px;
-       padding: 0 30px 0 10px;
+      
+       
    }
 
    @media (max-width: 1100px) {
@@ -824,12 +822,20 @@ nav li a {
     margin:  auto;
 }
 
-#post-card-container {
+.post-card-container {
     display: flex;
     justify-content: center;
 }
 
 .post-card {
+    width: 600px;
+    border: 1px solid #eaeaea;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.proj-card {
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -837,13 +843,17 @@ nav li a {
     background-color: #fff;
     border-radius: 10px;
     margin-bottom: 20px;
+    text-align: center;
 }
+
+
+
 
 #comment-container {
   margin: 0 0 30px 450px;
 }
 
-.post-card a {
+.post-card a, .card-header a, .proj-card a {
     text-decoration: none;
     color: black;
     text-align: left;
@@ -851,11 +861,21 @@ nav li a {
     margin-top: 20px;
 }
 
-#card-header {
+.card-header {
     display: flex;
     text-align: left;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.proj-body a {
+    text-decoration: none;
+    color: #878787;
+}
+
+.proj-body .proj-card-header a {
+    margin: auto;
+    text-align: center;
 }
 
 .post-card p {
@@ -875,7 +895,7 @@ nav li a {
     margin: 10px 0 5px 20px;
 }
 
-.post-card p {
+.post-card p, .proj-card p {
     margin-left: 20px;
 }
 
@@ -884,6 +904,7 @@ nav li a {
     border-top: 1px solid #eaeaea;
     width: 95%;
     margin: auto;
+    text-align: left;
 }
 
 .post-card-icon {
@@ -955,31 +976,60 @@ nav li a {
 }
 
 .feed-discover {
-    max-width: 1500px;
+    max-width: 300px;
     margin: auto;
     text-align: center;
     position: relative;
     margin-bottom: 50px;
 }
 
+.feed-discover2 {
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+
 .feed-discover:after {
     content:'';
-    width: 12%;
+    width: 60%;
     height:2px;
     background:var(--accent-clr);
     position:absolute;
     top: 12px;
-    right: 455px;
+    right: -150px;
 }
 
 .feed-discover:before {
     content:'';
-    width: 12%;
+    width: 60%;
     height:2px;
     background:var(--accent-clr);
     position:absolute;
     top: 12px;
-    right: 865px;
+    right: 266px;
+}
+
+.feed-discover2:after {
+    content:'';
+    width: 60%;
+    height:2px;
+    background:var(--accent-clr);
+    position:absolute;
+    top: 12px;
+    right: -150px;
+}
+
+.feed-discover2:before {
+    content:'';
+    width: 60%;
+    height:2px;
+    background:var(--accent-clr);
+    position:absolute;
+    top: 12px;
+    right: 266px;
 }
 
 .feed-btns {
@@ -990,10 +1040,17 @@ nav li a {
     border: 1px solid #eaeaea
 }
 
+
+
 .feed-btns:hover {
     cursor: pointer;
     transform: translateY(-5px);
 }
 
+
+.link-icon {
+    margin-top: 2px;
+    color: #939393;
+}
 
 

@@ -18,8 +18,8 @@ function Search() {
     //need to error handle if no match and search bar not working anywhere except home page
     function handleSubmitSearch(e){
         e.preventDefault()
-        let userMatch = users.filter(user => user.name.toLowerCase() === search.toLowerCase())[0]
-        navigate(`/profilepage/${userMatch.id}`)
+        let userMatch = users.find(user => user.name.toLowerCase() === search.toLowerCase())
+        navigate(userMatch ? `/profilepage/${userMatch.id}` : `/notfound`)
     }
 
   

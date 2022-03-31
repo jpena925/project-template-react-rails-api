@@ -38,12 +38,14 @@ function Comment({ props }) {
   const renderComments = commentsAfterPost?.map(comment => (
     <EachComment 
       className='comment-box'
-      key={comment.id} 
+      key={comment.id}
+      id={comment.id} 
       text={comment.text} 
       user_id={comment.user_id} 
       name={comment.name}
     />
   ))
+
 
   return (
     <div>

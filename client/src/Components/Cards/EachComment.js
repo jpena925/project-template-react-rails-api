@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import prof from '../../download (1).png'
+import { UserContext } from '../../App'
 
-function EachComment({ text, user_id, name }) {
+function EachComment({ text, user_id, name, id }) {
     const [image, setImage] = useState(prof)
+    const user = useContext(UserContext)
 
     useEffect(() => {
       fetch(`/user_images/${user_id}`)
@@ -14,7 +16,11 @@ function EachComment({ text, user_id, name }) {
         }
       })
     },[])
- 
+    
+
+    // function handleDeleteComment(){
+    //   console.log(id)
+    // }
 
     return (
     <div id='comment'>
@@ -23,7 +29,7 @@ function EachComment({ text, user_id, name }) {
             <Link to={`/profilepage/${user_id}`}>{name}</Link>
         </div>
         <p>{text}</p>
-        {user_id === '<%= Session["user_id"] %>' ? <button>Delete Comment</button> : null}
+        {/* {user_id === user.id ? <button onClick={handleDeleteComment}>Delete Comment</button> : null} */}
     </div>
   )
 }

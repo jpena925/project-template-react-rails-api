@@ -17,7 +17,7 @@ function VisitingPage() {
         fetch(`/users/${params}`)
         .then(res => res.json())
         .then(user => setVisitedUser(() => user))
-    }, [])
+    }, [params])
 
 
     useEffect(() => {
@@ -95,9 +95,9 @@ function VisitingPage() {
         </div>
         <div id='links'>
           <h2>My links:</h2>
-          <p><a href={visitedUser?.linkedin}>Linkedin</a></p>
-          <p><a href={visitedUser?.github}>Github</a></p>
-          <p><a href={visitedUser?.blog}>Blog</a></p>
+          <p><a href={visitedUser?.linkedin} target="_blank">Linkedin</a></p>
+          <p><a href={visitedUser?.github} target="_blank">Github</a></p>
+          <p><a href={visitedUser?.blog} target="_blank">Blog</a></p>
         </div>
       </div>
     </div>

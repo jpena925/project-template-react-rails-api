@@ -7,6 +7,7 @@ import ProjectCard from '../Cards/ProjectCard';
 function ProfileFeedItem({ props }) {
   const [showComments, setShowComments] = useState(false)
  
+  console.log(props)
 
   const renderComments = props.comments?.map(comment => (
         <Comment 

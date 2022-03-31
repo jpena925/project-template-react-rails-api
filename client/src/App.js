@@ -5,6 +5,7 @@ import HomePage from './Components/Homepage/HomePage'
 import ProfilePage from './Components/Profile/ProfilePage'
 import ProjectPage from './Components/Project/ProjectPage'
 import VisitingPage from './Components/Profile/VisitingPage'
+import ErrorPage from './Components/ErrorPage'
 import { Routes, Route } from "react-router-dom"
 import { useNavigate } from 'react-router';
 import { useEffect, useState, createContext } from 'react'
@@ -70,7 +71,8 @@ function App() {
           <Route exact path="/homepage" element={<HomePage user={user} profPic={profPic} setProfPic={setProfPic} />} />
           <Route exact path="/profilepage" element={<ProfilePage user={user} profPic={profPic} setProfPic={setProfPic} />} />
           <Route exact path="/profilepage/:id" element={<VisitingPage user={user} profPic={profPic} setProfPic={setProfPic}/>} />
-          <Route exact path="/projectpage/:id" element={<ProjectPage user={user} />} />  
+          <Route exact path="/projectpage/:id" element={<ProjectPage user={user} />} /> 
+          <Route exact path="/notfound" element={<ErrorPage user={user} />} /> 
         </Routes>
     </UserContext.Provider>
   );

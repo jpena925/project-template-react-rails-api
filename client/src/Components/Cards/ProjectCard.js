@@ -8,7 +8,6 @@ import Comment from '../Cards/Comment'
 
 function ProjectCard({ props, id, profileProfPic, showComments, setShowComments, myProfPic }) {
   const user = useContext(UserContext)
-  console.log(props)
   const [profPic, setProfPic] = useState()
 
   useEffect(() => {

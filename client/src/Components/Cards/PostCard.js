@@ -6,7 +6,7 @@ import { BiCommentDetail } from 'react-icons/bi'
 import { AiOutlineLike } from 'react-icons/ai'
 import Comment from './Comment'
 
-function PostCard({ props, id, setShowComments, myProfPic, showComments }) {
+function PostCard({ props, id, setShowComments, myProfPic, profileProfPic, showComments }) {
   const user = useContext(UserContext)
   const [profPic, setProfPic] = useState()
 
@@ -23,12 +23,12 @@ function PostCard({ props, id, setShowComments, myProfPic, showComments }) {
     })}
   }, [user])
 
-  console.log(user)
+
   return (
-    <div id="post-card-container">
+    <div class="post-card-container">
       <div className='post-card' >
-          <div id="card-header">
-            <img src={profPic} alt='prof-pic' className="card-pic" />
+          <div className="card-header">
+            <img src={profPic === undefined ? profileProfPic : profPic} alt='prof-pic' className="card-pic" />
             {props.user ? <Link to={`/profilepage/${props.user.id}`}>{props.user.name}</Link> : null}
           </div>
           <p>{props.text}</p>

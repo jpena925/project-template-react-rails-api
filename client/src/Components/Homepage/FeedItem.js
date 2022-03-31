@@ -8,7 +8,7 @@ function FeedItem({ props, profPic, id }) {
 
   return (
     <>
-    {props.github ? <ProjectCard props={props}/> : <PostCard id={id} props={props} myProfPic={profPic} showComments={showComments} setShowComments={setShowComments} />}
+    {props.github ? <ProjectCard props={props} id={id} showComments={showComments} setShowComments={setShowComments} myProfPic={profPic} /> : <PostCard id={id} props={props} myProfPic={profPic} showComments={showComments} setShowComments={setShowComments} />}
     </>
   )
 }

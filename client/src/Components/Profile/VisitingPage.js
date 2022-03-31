@@ -4,6 +4,9 @@ import prof from '../../download (1).png'
 import VisitingFeed from './VisitingFeed'
 import ProfileFeed from './ProfileFeed'
 import { UserContext } from '../../App'
+import { AiFillLinkedin } from 'react-icons/ai'
+import { BsGithub } from 'react-icons/bs'
+import { SiMedium } from 'react-icons/si'
 
 function VisitingPage() {
     const params = useParams().id
@@ -19,7 +22,7 @@ function VisitingPage() {
         fetch(`/users/${params}`)
         .then(res => res.json())
         .then(user => setVisitedUser(() => user))
-    }, [])
+    }, [params])
 
 
     useEffect(() => {
@@ -79,6 +82,8 @@ function VisitingPage() {
       setIsFollow(false)
     }
 
+    console.log(visitedUser?.blog)
+
     return (
     <div className='split'>
     <VisitingFeed profPic={profPic} />
@@ -99,10 +104,10 @@ function VisitingPage() {
             <p id='bio-text'>{visitedUser?.bio}</p>
         </div>
         <div id='links'>
-          <h2>My links:</h2>
-          <p><a href={visitedUser?.linkedin}>Linkedin</a></p>
-          <p><a href={visitedUser?.github}>Github</a></p>
-          <p><a href={visitedUser?.blog}>Blog</a></p>
+          <h2>Links:</h2>
+          {visitedUser?.linkedin === '' ? null : <p><i><AiFillLinkedin className='link-icon'/> </i><a href={visitedUser?.linkedin} target="_blank">Linkedin</a></p>}
+          {visitedUser?.github === '' ? null : <p><i><BsGithub className='link-icon' /></i> <a href={visitedUser?.github} target="_blank">Github</a></p>}
+          {visitedUser?.blog === '' ? null : <p><i><SiMedium className='link-icon' /></i> <a href={visitedUser?.blog} target="_blank">Blog</a></p>}
         </div>
       </div>
     </div>

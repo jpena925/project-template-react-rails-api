@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     def feed
         user = User.find(params[:user_id])
         followee_projects = user.followees.map {|followee| [followee.posts, followee.projects]}
-        all_projects = followee_projects + user.projects
+        all_projects = followee_projects + user.projects + user.posts
 
         feed_data = flatten_array(all_projects)
         render json: feed_data, status: :ok

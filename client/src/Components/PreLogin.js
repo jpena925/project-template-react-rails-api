@@ -5,7 +5,7 @@ import logo from '../logo.svg'
 
 function PreLogin() {
   return (
-    <div>
+    <div >
       <img id="prelogin-logo" src={prelogin_logo} alt="TypewriterLogo"/>
       <Link id="prelogin-link" to="/login"><img src={logo} alt="logo" id="prelogin-logo-img"/></Link>
     </div>

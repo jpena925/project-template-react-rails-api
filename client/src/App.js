@@ -11,7 +11,8 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState, createContext } from 'react'
 import Navbar from './Components/Navbar';
 import prof from './download (1).png'
-import RequireAuth from './Components/RequireAuth';
+// Uncomment line for authorizing
+// import RequireAuth from './Components/RequireAuth';
 
 export const UserContext = createContext()
 
@@ -71,7 +72,8 @@ function App() {
         <Route exact path="/" element={<PreLogin />} />
         <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
         {user ? 
-          <><Route 
+          <>
+          <Route 
             exact path="/homepage" 
             element={<HomePage profPic={profPic} setProfPic={setProfPic} />} 
           />
@@ -85,13 +87,17 @@ function App() {
           />
           <Route 
             exact path="/projectpage/:id" 
-            element={<ProjectPage />} 
+            element={<ProjectPage />}
           />
           <Route 
             exact path="/notfound" 
             element={<ErrorPage user={user} />} 
-          /> </> 
-          :<><Route 
+          />
+         </> : null}
+
+
+          {/* This code will reroute a user that's not logged in to the login page, but doesn't work on refresh  */}
+          {/* <Route 
             exact path="/homepage" 
             element={<RequireAuth><HomePage profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
           />
@@ -106,7 +112,7 @@ function App() {
           <Route 
             exact path="/projectpage/:id" 
             element={<RequireAuth><ProjectPage /></RequireAuth>} 
-          /></>}
+          /> */}
       </Routes>
     </UserContext.Provider>
   );

@@ -7,7 +7,7 @@ function Comment({ props, myProfPic }) {
   const [newComment, setNewComment] = useState(null)
 
   const user = useContext(UserContext)
-
+  console.log(user)
   function handleSubmit(e) {
     e.preventDefault()
 

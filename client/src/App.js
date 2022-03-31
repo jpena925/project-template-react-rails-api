@@ -31,22 +31,11 @@ function App() {
     }) 
   }, [])
 
-  console.log(user)
-
-  //Rebekah's attempt to save user to localstorage to persist after refresh DON'T DELETE YET PLZ
-  // useEffect(() => {
-  //   setUser(JSON.parse(window.localStorage.getItem('user')));
-  // }, []);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('user', user);
-  // }, [user]);
-
-  // useEffect(() =>  {
-  //   if (user) {
-  //     setShowNavBar(true)
-  //   }
-  // }, [user])
+  useEffect(() => {
+    if(user) {
+      setShowNavBar(true)
+    }
+  }, [user])
 
   function handleLogin(user) {
     setShowNavBar(true)
@@ -73,32 +62,51 @@ function App() {
     })}
   }, [user])
 
-
   return (
     <UserContext.Provider value={user}>
       {showNavBar ? <Navbar onLogout={handleLogout} /> : null}
-        <Routes>
-          <Route exact path="/" element={<PreLogin />} />
-          <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route 
+      <Routes>
+        <Route exact path="/" element={<PreLogin />} />
+        <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
+        {user ? 
+          <><Route 
             exact path="/homepage" 
-            element={<RequireAuth><HomePage user={user} profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
+            element={<HomePage profPic={profPic} setProfPic={setProfPic} />} 
           />
           <Route 
             exact path="/profilepage" 
-            element={<RequireAuth><ProfilePage user={user} profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
+            element={<ProfilePage profPic={profPic} setProfPic={setProfPic} />} 
           />
           <Route 
             exact path="/profilepage/:id" 
-            element={<RequireAuth><VisitingPage user={user} profPic={profPic} setProfPic={setProfPic}/></RequireAuth>} 
+            element={<VisitingPage profPic={profPic} setProfPic={setProfPic}/>} 
           />
           <Route 
             exact path="/projectpage/:id" 
-            element={<RequireAuth><ProjectPage user={user} /></RequireAuth>} 
-          />  
-        </Routes>
+            element={<ProjectPage />} 
+          /></>: 
+          <><Route 
+            exact path="/homepage" 
+            element={<RequireAuth><HomePage profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
+          />
+          <Route 
+            exact path="/profilepage" 
+            element={<RequireAuth><ProfilePage profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
+          />
+          <Route 
+            exact path="/profilepage/:id" 
+            element={<RequireAuth><VisitingPage profPic={profPic} setProfPic={setProfPic}/></RequireAuth>} 
+          />
+          <Route 
+            exact path="/projectpage/:id" 
+            element={<RequireAuth><ProjectPage /></RequireAuth>} 
+          /></>}
+      </Routes>
     </UserContext.Provider>
   );
 }
 
 export default App;
+
+
+

@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState, createContext } from 'react'
 import Navbar from './Components/Navbar';
 import prof from './download (1).png'
+import RequireAuth from './Components/RequireAuth';
 
 export const UserContext = createContext()
 
@@ -67,10 +68,22 @@ function App() {
         <Routes>
           <Route exact path="/" element={<PreLogin />} />
           <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route exact path="/homepage" element={<HomePage user={user} profPic={profPic} setProfPic={setProfPic} />} />
-          <Route exact path="/profilepage" element={<ProfilePage user={user} profPic={profPic} setProfPic={setProfPic} />} />
-          <Route exact path="/profilepage/:id" element={<VisitingPage user={user} profPic={profPic} setProfPic={setProfPic}/>} />
-          <Route exact path="/projectpage/:id" element={<ProjectPage user={user} />} />  
+          <Route 
+            exact path="/homepage" 
+            element={<RequireAuth><HomePage user={user} profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
+          />
+          <Route 
+            exact path="/profilepage" 
+            element={<RequireAuth><ProfilePage user={user} profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
+          />
+          <Route 
+            exact path="/profilepage/:id" 
+            element={<RequireAuth><VisitingPage user={user} profPic={profPic} setProfPic={setProfPic}/></RequireAuth>} 
+          />
+          <Route 
+            exact path="/projectpage/:id" 
+            element={<RequireAuth><ProjectPage user={user} /></RequireAuth>} 
+          />  
         </Routes>
     </UserContext.Provider>
   );

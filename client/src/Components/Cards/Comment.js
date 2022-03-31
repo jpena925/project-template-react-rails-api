@@ -7,7 +7,7 @@ function Comment({ props, myProfPic }) {
   const [newComment, setNewComment] = useState(null)
 
   const user = useContext(UserContext)
-
+  console.log(user)
   function handleSubmit(e) {
     e.preventDefault()
 
@@ -48,9 +48,9 @@ function Comment({ props, myProfPic }) {
   return (
     <div className='comment-container'>
       
-          <div class="new-comment-container">
+          <div className="new-comment-container">
             <img src={myProfPic} alt='prof-pic' className='card-pic'/>
-            <div class="new-comment">
+            <div className="new-comment">
               <form onSubmit={(e) => handleSubmit(e)}>
                 <input type='text' onChange={(e) => setNewCommentText(e.target.value)} placeholder='Leave a comment!' className='field3'/>
                 {newCommentText === "" ? null : <input type='submit' id='submit' className='comment-submit' />}

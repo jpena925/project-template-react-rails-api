@@ -5,18 +5,18 @@ import { BiImageAdd } from 'react-icons/bi'
 import { BsGithub } from 'react-icons/bs'
 import { UserContext } from '../App'
 
-function PostForm({ profPic }) {
+function PostForm({ profPic, setNewPost, setNewProject }) {
   const user = useContext(UserContext)
-  const [post, setPost] = useState('')
   const [projectError, setProjectError] = useState(null)
+  const [postText, setPostText] = useState('')
+
   
-  const [postCategories, setPostCategories] = useState({
+  const [projectCategories, setProjectCategories] = useState({
     link: false,
     image: false,
     gitHub: false
   })
   const [showPostForm, setShowPostForm] = useState(true)
-  const [createPost, setCreatePost] = useState('')
   const [createProject, setCreateProject] = useState({
     title: '',
     description: '',
@@ -33,7 +33,7 @@ function PostForm({ profPic }) {
     e.preventDefault()
     const newObj = {
       user_id: user.id,
-      text: post
+      text: postText
     }
     fetch('/posts', {
       method: 'POST', 
@@ -41,21 +41,18 @@ function PostForm({ profPic }) {
       body: JSON.stringify(newObj)
       })
       .then(res => res.json())
-      .then(data => {
-        console.log(data)
-      })
-      setPost('')
+      .then(data => setNewPost(data))
   }
 
   const handleProject = (e) => {
     e.preventDefault()
     const newObj = Object.assign({ user_id: user?.id }, createProject)
-    console.log(newObj)
     fetch('/projects', {
       method: 'POST', 
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newObj)
       })
+    
       .then(res => {
         if(res.ok) {
           res.json().then(data => console.log(data))
@@ -71,6 +68,7 @@ function PostForm({ profPic }) {
         image_url: '',
         github: ''
       })
+      .then(data => setNewProject(data))
   }
 
 
@@ -87,7 +85,7 @@ function PostForm({ profPic }) {
         <form id="post-form" className="post-form" name="form">
           <div className="post-content">
             <label htmlFor="post-content" />
-            <textarea name="post" id="post-content" className="post-textarea scroller" placeholder="What's the T?" value={post} onChange={(e) => setPost(e.target.value)}></textarea>
+            <textarea name="post" id="post-content" className="post-textarea scroller" placeholder="What's the T?" value={postText} onChange={(e) => setPostText(e.target.value)}></textarea>
           </div>
             <div className="post-actions__widget">
               <button className="btn post-publish" onClick={handlePost}>publish</button>
@@ -107,16 +105,16 @@ function PostForm({ profPic }) {
           <div className="post-content">
             <label htmlFor="post-content" />
             <textarea name="post" id="post-content" className="post-textarea scroller" placeholder="Project description..." value={createProject.description} onChange={(e) => handleFormChange(e, 'description')}></textarea>
-            {postCategories.link ? <input className="project-form-input" type="text" placeholder="Link to project" onChange={(e) => handleFormChange(e, 'url')} value={createProject.url}/> : null}
-            {postCategories.image ? <input className="project-form-input" type="text" placeholder="Image URL" onChange={(e) => handleFormChange(e, 'image_url')} value={createProject.image_url}/> : null}
-            {postCategories.gitHub ? <input className="project-form-input" type="text" placeholder="Github URL" onChange={(e) => handleFormChange(e, 'github')} value={createProject.github}/> : null}
+            {projectCategories.link ? <input className="project-form-input" type="text" placeholder="Link to project" onChange={(e) => handleFormChange(e, 'url')} value={createProject.url}/> : null}
+            {projectCategories.image ? <input className="project-form-input" type="text" placeholder="Image URL" onChange={(e) => handleFormChange(e, 'image_url')} value={createProject.image_url}/> : null}
+            {projectCategories.gitHub ? <input className="project-form-input" type="text" placeholder="Github URL" onChange={(e) => handleFormChange(e, 'github')} value={createProject.github}/> : null}
           </div>
             <div className="post-actions__widget">
               <button className="btn post-publish" onClick={handleProject}>publish</button>
               <button type="button" onClick={() => setShowPostForm(true)} className='btn'>Post a status or link?</button>
-              <button type="button" onClick={() => setPostCategories(() => ({...postCategories, link: !postCategories.link}))} className='btn post-icon'><MdAddLink /></button>
-              <button type="button" onClick={() => setPostCategories(() => ({...postCategories, image: !postCategories.image}))} className='btn post-icon'><BiImageAdd /></button>
-              <button type="button" onClick={() => setPostCategories(() => ({...postCategories, gitHub: !postCategories.gitHub}))} className='btn post-icon'><BsGithub /></button>
+              <button type="button" onClick={() => setProjectCategories(() => ({...projectCategories, link: !projectCategories.link}))} className='btn post-icon'><MdAddLink /></button>
+              <button type="button" onClick={() => setProjectCategories(() => ({...projectCategories, image: !projectCategories.image}))} className='btn post-icon'><BiImageAdd /></button>
+              <button type="button" onClick={() => setProjectCategories(() => ({...projectCategories, gitHub: !projectCategories.gitHub}))} className='btn post-icon'><BsGithub /></button>
             </div>
         </form>
         <p>{projectError}</p>

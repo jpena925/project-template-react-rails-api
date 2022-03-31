@@ -40,8 +40,7 @@ function Login({ onLogin }) {
         if (r.ok) {
           r.json().then((user) => onLogin(user)) 
         } else {
-          // r.json().then(data => console.log(data))
-          r.json().then(data => setErrorMsg((errorMsg) => data[routeString === '/login' ? 'error' : 'errors']))
+          r.json().then(data => setErrorMsg(() => data[routeString === '/login' ? 'error' : 'errors']))
           setShowErrorMsg(true)
           setPassword("")
         }
@@ -62,7 +61,7 @@ function Login({ onLogin }) {
         {showLogin ?
         <form id="login">
               {/* <h1>Sign in to Twiddle Wakka</h1> */}
-              {showErrorMsg ? <p style={{'color':'red'}}>Invalid username or password.</p> : null}
+              {showErrorMsg ? <p style={{'color':'red'}}>{errorMsg}</p> : null}
               <div className="input-field">
                 <label htmlFor="email"></label>
                 <i><BsFillPersonFill className='icon' /></i>
@@ -90,7 +89,6 @@ function Login({ onLogin }) {
           </form> :
           <form id="signup">
               {/* <h1>Join Twiddle Wakka today</h1> */}
-              {showErrorMsg ? <p style={{'color':'red'}}>Invalid email or password.</p> : null}
               <div className="input-field">
               <i><BsFillPersonFill className='icon' /></i>
               <label htmlFor="name"></label>
@@ -133,7 +131,9 @@ function Login({ onLogin }) {
                   className='field'
                 /><br/>
                 <input onClick={handleSignupSubmit} type="submit" value="Sign up" className="button" />
-                <p onClick={() => setShowLogin(!showLogin)}>Already have an account?</p>
+                <p onClick={() => handleChangeForm()}>Already have an account?</p>
+                {showErrorMsg && errorMsg.length > 1 ? <>{errorMsg.map(msg => <p style={{'color':'red'}}>{msg}</p>)}</> : null}
+                {showErrorMsg && errorMsg.length === 1 ? <p style={{'color':'red'}}>{errorMsg}</p> : null}
               </div>
           </form>
         }

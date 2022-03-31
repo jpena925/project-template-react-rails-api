@@ -3,7 +3,7 @@ import FeedItem from './FeedItem'
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../../App'
 
-function Discover() {
+function Discover({ profPic }) {
   const [discover, setDiscover] = useState(null)
   const user = useContext(UserContext)
 
@@ -16,7 +16,7 @@ function Discover() {
 
   return (
     <div>
-       {discover ? discover.map(item => <FeedItem key={uuidv4()} props={item} />) : null} 
+       {discover ? discover.map(item => <FeedItem key={uuidv4()} id={item.user.id} props={item} profPic={profPic}/>) : null} 
     </div>
   )
 }

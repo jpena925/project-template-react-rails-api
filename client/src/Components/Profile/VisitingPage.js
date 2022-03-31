@@ -12,7 +12,9 @@ function VisitingPage() {
     const user = useContext(UserContext)
     const [isFollow, setIsFollow] = useState(false)
     const [relationshipId, setRelationshipId] = useState()
+    const [followerCount, setFollowerCount] = useState()
 
+    
     useEffect(() => {
         fetch(`/users/${params}`)
         .then(res => res.json())
@@ -21,20 +23,25 @@ function VisitingPage() {
 
 
     useEffect(() => {
-      fetch(`/relationships/${visitedUser?.id},${user?.id}`)
+      fetch(`/relationships_check/${user?.id}, ${visitedUser?.id}`)
       .then(res => res.json())
       .then(data => {
         if(data.length === 0) {
-          console.log('hello')
           setIsFollow(false)
         } else {
-          console.log('hello')
           setIsFollow(true)
           setRelationshipId(data[0]?.id)
         }
-        
       })
-    }, [user, visitedUser])
+    }, [user, visitedUser, isFollow])
+
+    useEffect(() => {
+      if(user) {
+        fetch(`/relationships/${visitedUser?.id}`)
+        .then(res => res.json())
+        .then(data => setFollowerCount(data.length)
+        )}
+    }, [user, visitedUser, isFollow])
 
     useEffect(() => {
         if(visitedUser) {
@@ -61,13 +68,11 @@ function VisitingPage() {
         })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
         })
         setIsFollow(true)
     }
 
     const handleUnfollow = () => {
-      console.log(relationshipId)
       fetch(`/relationships/${relationshipId}`, {
         method: 'DELETE',
       })
@@ -87,7 +92,7 @@ function VisitingPage() {
         : <button id='follow-btn' onClick={handleFollow}>Follow</button>
         }
         <div id='bio'>
-          <p>69 Followers</p>
+          <p>{followerCount} Followers</p>
         </div>
         <div id='bio'>
           <h2>Bio:</h2>

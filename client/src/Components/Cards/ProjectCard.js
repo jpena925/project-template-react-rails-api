@@ -24,14 +24,15 @@ function ProjectCard({ props, id, profileProfPic, showComments, setShowComments,
   }, [user])
 
   return (
-    <div class="post-card-container">
+
+    <div className="post-card-container">
       <div className='proj-card' >
       <div className="card-header">
             <img src={profPic === undefined ? profileProfPic : profPic} alt='prof-pic' className="card-pic" />
             {props.user ? <Link to={`/profilepage/${props.user.id}`}>{props.user.name}</Link> : null}
         </div>
         <div className='proj-body'>
-          <div class="proj-card-header">
+          <div className="proj-card-header">
             <Link to={`/projectpage/${props.id}`}><h2>{props.title}</h2></Link>
           </div>
           <Link to={`/projectpage/${props.id}`}><img src={props.image_url} alt='project' className='project-picture' /></Link><br/>

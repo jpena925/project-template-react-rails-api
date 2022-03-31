@@ -22,7 +22,7 @@ function VisitingPage() {
         fetch(`/users/${params}`)
         .then(res => res.json())
         .then(user => setVisitedUser(() => user))
-    }, [])
+    }, [params])
 
 
     useEffect(() => {
@@ -105,9 +105,9 @@ function VisitingPage() {
         </div>
         <div id='links'>
           <h2>Links:</h2>
-          {visitedUser?.linkedin === '' ? null : <p><i><AiFillLinkedin className='link-icon'/> </i><a href={visitedUser?.linkedin}>Linkedin</a></p>}
-          {visitedUser?.github === '' ? null : <p><i><BsGithub className='link-icon' /></i> <a href={visitedUser?.github}>Github</a></p>}
-          {visitedUser?.blog === '' ? null : <p><i><SiMedium className='link-icon' /></i> <a href={visitedUser?.blog}>Blog</a></p>}
+          {visitedUser?.linkedin === '' ? null : <p><i><AiFillLinkedin className='link-icon'/> </i><a href={visitedUser?.linkedin} target="_blank">Linkedin</a></p>}
+          {visitedUser?.github === '' ? null : <p><i><BsGithub className='link-icon' /></i> <a href={visitedUser?.github} target="_blank">Github</a></p>}
+          {visitedUser?.blog === '' ? null : <p><i><SiMedium className='link-icon' /></i> <a href={visitedUser?.blog} target="_blank">Blog</a></p>}
         </div>
       </div>
     </div>

@@ -7,7 +7,9 @@ import { UserContext } from '../App'
 
 function PostForm({ profPic, setNewPost, setNewProject }) {
   const user = useContext(UserContext)
+  const [projectError, setProjectError] = useState(null)
   const [postText, setPostText] = useState('')
+
   
   const [projectCategories, setProjectCategories] = useState({
     link: false,
@@ -40,6 +42,7 @@ function PostForm({ profPic, setNewPost, setNewProject }) {
       })
       .then(res => res.json())
       .then(data => setNewPost(data))
+      setPostText('')
   }
 
   const handleProject = (e) => {
@@ -50,8 +53,22 @@ function PostForm({ profPic, setNewPost, setNewProject }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newObj)
       })
-      .then(res => res.json())
-      .then(data => setNewProject(data))
+    
+      .then(res => {
+        if(res.ok) {
+          res.json().then(data => setNewProject(data))
+          setProjectError(null)
+        } else {
+          res.json().then(data => setProjectError(data.errors[0]))
+        }
+      })
+      setCreateProject({
+        title: '',
+        description: '',
+        url: '',
+        image_url: '',
+        github: ''
+      })
   }
 
 
@@ -100,6 +117,7 @@ function PostForm({ profPic, setNewPost, setNewProject }) {
               <button type="button" onClick={() => setProjectCategories(() => ({...projectCategories, gitHub: !projectCategories.gitHub}))} className='btn post-icon'><BsGithub /></button>
             </div>
         </form>
+        <p>{projectError}</p>
       </div>
       }
     </div>

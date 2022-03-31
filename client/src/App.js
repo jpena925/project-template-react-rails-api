@@ -5,6 +5,7 @@ import HomePage from './Components/Homepage/HomePage'
 import ProfilePage from './Components/Profile/ProfilePage'
 import ProjectPage from './Components/Project/ProjectPage'
 import VisitingPage from './Components/Profile/VisitingPage'
+import ErrorPage from './Components/ErrorPage'
 import { Routes, Route, useLocation } from "react-router-dom"
 import { useNavigate } from 'react-router';
 import { useEffect, useState, createContext } from 'react'
@@ -30,6 +31,7 @@ function App() {
       }
     }) 
   }, [])
+
 
   useEffect(() => {
     if(user) {
@@ -84,8 +86,12 @@ function App() {
           <Route 
             exact path="/projectpage/:id" 
             element={<ProjectPage />} 
-          /></>: 
-          <><Route 
+          />
+          <Route 
+            exact path="/notfound" 
+            element={<ErrorPage user={user} />} 
+          /> </> 
+          :<><Route 
             exact path="/homepage" 
             element={<RequireAuth><HomePage profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
           />

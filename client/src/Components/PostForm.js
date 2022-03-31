@@ -42,6 +42,7 @@ function PostForm({ profPic, setNewPost, setNewProject }) {
       })
       .then(res => res.json())
       .then(data => setNewPost(data))
+      setPostText('')
   }
 
   const handleProject = (e) => {
@@ -55,7 +56,7 @@ function PostForm({ profPic, setNewPost, setNewProject }) {
     
       .then(res => {
         if(res.ok) {
-          res.json().then(data => console.log(data))
+          res.json().then(data => setNewProject(data))
           setProjectError(null)
         } else {
           res.json().then(data => setProjectError(data.errors[0]))
@@ -68,7 +69,6 @@ function PostForm({ profPic, setNewPost, setNewProject }) {
         image_url: '',
         github: ''
       })
-      .then(data => setNewProject(data))
   }
 
 

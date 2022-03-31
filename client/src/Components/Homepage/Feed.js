@@ -9,14 +9,16 @@ function Feed({ profPic, feed, setFeed, newPost, newProject }) {
   console.log(newPost)
   useEffect(() => {
     if(user){
-    fetch(`/users/${user.id}/feed`)
-    .then(res => res.json())
-    .then(data => {
-      setFeed(data)
-      console.log(data) //TODO: fetch isn't fething updated feed data even though newPost is changing and data appears on backend
+      fetch(`/users/${user.id}/feed`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setFeed(data)
+       //TODO: fetch isn't fething updated feed data even though newPost is changing and data appears on backend
     })}
   }, [user, newPost, newProject])
 
+  // console.log(feed) //feed doesn't get updated because fetch doesn't seem to set it with post update
   return (
     <div id='feed-container'>
     {feed ? feed.map(item => <FeedItem key={uuidv4()} props={item} id={item.user.id} profPic={profPic} />) : null}

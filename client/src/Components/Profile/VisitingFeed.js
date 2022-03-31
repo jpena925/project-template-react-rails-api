@@ -18,10 +18,9 @@ function VisitingFeed({profPic}) {
     }, [userID])
 
     const data = visitedUser ? [visitedUser.posts, visitedUser.projects].flat() : null
-    console.log(visitedUser)
     
-    const dataMap = data ? data.map(postproj => (<ProfileFeedItem key={uuidv4()} props={postproj} />)) : null
-
+    const dataMap = data ? data.map(postproj => (<ProfileFeedItem key={uuidv4()} props={postproj} profPic={profPic} />)) : null
+    
   return (
     <div>
         {dataMap}

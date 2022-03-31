@@ -19,8 +19,6 @@ function ProjectDisplay() {
     .then(project => setProject(() => project))
   }, [id])
 
-  console.log(project.comments)
-
   return (
     <div id='project-display'>
       <div className='project-header'>

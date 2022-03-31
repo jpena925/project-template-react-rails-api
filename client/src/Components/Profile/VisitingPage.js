@@ -4,6 +4,9 @@ import prof from '../../download (1).png'
 import VisitingFeed from './VisitingFeed'
 import ProfileFeed from './ProfileFeed'
 import { UserContext } from '../../App'
+import { AiFillLinkedin } from 'react-icons/ai'
+import { BsGithub } from 'react-icons/bs'
+import { SiMedium } from 'react-icons/si'
 
 function VisitingPage() {
     const params = useParams().id
@@ -12,7 +15,9 @@ function VisitingPage() {
     const user = useContext(UserContext)
     const [isFollow, setIsFollow] = useState(false)
     const [relationshipId, setRelationshipId] = useState()
+    const [followerCount, setFollowerCount] = useState()
 
+    
     useEffect(() => {
         fetch(`/users/${params}`)
         .then(res => res.json())
@@ -21,20 +26,25 @@ function VisitingPage() {
 
 
     useEffect(() => {
-      fetch(`/relationships/${visitedUser?.id},${user?.id}`)
+      fetch(`/relationships_check/${user?.id}, ${visitedUser?.id}`)
       .then(res => res.json())
       .then(data => {
         if(data.length === 0) {
-          console.log('hello')
           setIsFollow(false)
         } else {
-          console.log('hello')
           setIsFollow(true)
           setRelationshipId(data[0]?.id)
         }
-        
       })
-    }, [user, visitedUser])
+    }, [user, visitedUser, isFollow])
+
+    useEffect(() => {
+      if(user) {
+        fetch(`/relationships/${visitedUser?.id}`)
+        .then(res => res.json())
+        .then(data => setFollowerCount(data.length)
+        )}
+    }, [user, visitedUser, isFollow])
 
     useEffect(() => {
         if(visitedUser) {
@@ -61,18 +71,18 @@ function VisitingPage() {
         })
         .then(res => res.json())
         .then(data => {
-          console.log(data)
         })
         setIsFollow(true)
     }
 
     const handleUnfollow = () => {
-      console.log(relationshipId)
       fetch(`/relationships/${relationshipId}`, {
         method: 'DELETE',
       })
       setIsFollow(false)
     }
+
+    console.log(visitedUser?.blog)
 
     return (
     <div className='split'>
@@ -87,17 +97,17 @@ function VisitingPage() {
         : <button id='follow-btn' onClick={handleFollow}>Follow</button>
         }
         <div id='bio'>
-          <p>69 Followers</p>
+          <p>{followerCount} Followers</p>
         </div>
         <div id='bio'>
           <h2>Bio:</h2>
             <p id='bio-text'>{visitedUser?.bio}</p>
         </div>
         <div id='links'>
-          <h2>My links:</h2>
-          <p><a href={visitedUser?.linkedin} target="_blank">Linkedin</a></p>
-          <p><a href={visitedUser?.github} target="_blank">Github</a></p>
-          <p><a href={visitedUser?.blog} target="_blank">Blog</a></p>
+          <h2>Links:</h2>
+          {visitedUser?.linkedin === '' ? null : <p><i><AiFillLinkedin className='link-icon'/> </i><a href={visitedUser?.linkedin} target="_blank">Linkedin</a></p>}
+          {visitedUser?.github === '' ? null : <p><i><BsGithub className='link-icon' /></i> <a href={visitedUser?.github} target="_blank">Github</a></p>}
+          {visitedUser?.blog === '' ? null : <p><i><SiMedium className='link-icon' /></i> <a href={visitedUser?.blog} target="_blank">Blog</a></p>}
         </div>
       </div>
     </div>

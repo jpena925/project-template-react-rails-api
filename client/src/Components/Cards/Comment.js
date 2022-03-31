@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react'
 import EachComment from './EachComment'
 import { UserContext } from '../../App'
 
-function Comment({ props }) {
+function Comment({ props, myProfPic }) {
   const [newCommentText, setNewCommentText] = useState("")
   const [newComment, setNewComment] = useState(null)
 
   const user = useContext(UserContext)
-
+  console.log(user)
   function handleSubmit(e) {
     e.preventDefault()
 
@@ -48,11 +48,18 @@ function Comment({ props }) {
 
 
   return (
-    <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-          <input type='text' onChange={(e) => setNewCommentText(e.target.value)} placeholder='Leave a comment!'/>
-          <input type='submit' id='submit' />
-      </form>
+    <div className='comment-container'>
+      
+          <div className="new-comment-container">
+            <img src={myProfPic} alt='prof-pic' className='card-pic'/>
+            <div className="new-comment">
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <input type='text' onChange={(e) => setNewCommentText(e.target.value)} placeholder='Leave a comment!' className='field3'/>
+                {newCommentText === "" ? null : <input type='submit' id='submit' className='comment-submit' />}
+              </form>
+            </div>
+          </div>
+    
       {renderComments}
     </div>
   )

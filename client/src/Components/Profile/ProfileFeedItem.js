@@ -4,10 +4,9 @@ import PostCard from '../Cards/PostCard';
 import ProjectCard from '../Cards/ProjectCard';
 
 
-function ProfileFeedItem({ props }) {
+function ProfileFeedItem({ props, profPic }) {
   const [showComments, setShowComments] = useState(false)
- 
-  console.log(props)
+
 
   const renderComments = props.comments?.map(comment => (
         <Comment 
@@ -22,9 +21,7 @@ function ProfileFeedItem({ props }) {
 
   return (
     <div>
-        {props.github ? <ProjectCard props={props} /> : <PostCard props={props} />}
-        <button onClick={() => setShowComments(!showComments)}>Comment</button>
-        {showComments ? <Comment props={props}/> : null}
+        {props.github ? <ProjectCard props={props} myProfPic={profPic}  profileProfPic={profPic} showComments={showComments} setShowComments={setShowComments} /> : <PostCard props={props} myProfPic={profPic}  profileProfPic={profPic} showComments={showComments} setShowComments={setShowComments} />}
     </div>
   )
 }

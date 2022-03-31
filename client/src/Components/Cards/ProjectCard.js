@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function ProjectCard({ props }) {
   const user = useContext(UserContext)
-  console.log(props)
+
   return (
     <div className='proj-card' >
     <Link to={`/projectpage/${props.id}`}><img src={props.image_url} alt='project' className='project-picture' /></Link>

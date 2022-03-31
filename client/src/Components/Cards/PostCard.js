@@ -23,7 +23,6 @@ function PostCard({ props, id, setShowComments, myProfPic, showComments }) {
     })}
   }, [user])
 
-  console.log(user)
   return (
     <div id="post-card-container">
       <div className='post-card' >

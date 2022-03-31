@@ -10,7 +10,7 @@ function ProjectCard({ props }) {
     <Link to={`/projectpage/${props.id}`}><img src={props.image_url} alt='project' className='project-picture' /></Link>
       <div>
       <Link to={`/projectpage/${props.id}`}><h2>{props.title}</h2></Link>
-        <span className="project-users">{props.user ? props.user.name : user.name}</span>
+        <span className="project-users">{props.user ? props.user.name : user?.name}</span>
         <p className='proj-p'>{props.description}</p>
         <a href={props.github}>Github</a>
       </div>

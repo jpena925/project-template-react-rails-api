@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get "/discover", to: "users#discover"
   end
 
-  get '/relationships/:follower_id,:followee_id', to: 'relationships#check_follow'
+  get '/relationships_check/:follower_id,:followee_id', to: 'relationships#check_follow'
 
   get '/user_images/:id', to: "users#images"
   

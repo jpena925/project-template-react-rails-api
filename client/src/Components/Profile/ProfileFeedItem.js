@@ -23,8 +23,7 @@ function ProfileFeedItem({ props }) {
     <div>
         {props.github ? <ProjectCard props={props} /> : <PostCard props={props} />}
         <button onClick={() => setShowComments(!showComments)}>Comment</button>
-        {showComments ? <input type='text' placeholder='Make a comment!'/> : null}
-        {showComments ? renderComments : null}
+        {showComments ? <Comment props={props}/> : null}
     </div>
   )
 }

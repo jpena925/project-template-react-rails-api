@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.permit(:text, :commentable_type, :commmentable_id, :user_id)
+        params.permit(:text, :commentable_type, :commentable_id, :user_id)
     end
 
     def render_not_found_res

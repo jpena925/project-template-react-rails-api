@@ -10,9 +10,11 @@ function HomePage({ profPic, setProfPic }) {
   return (
     <>
     <PostForm profPic={profPic} />
-    <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("feed")}>Feed</button>
-    <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("discover")}>Discover</button>
-    {feedOrDiscover == "feed" ? <Feed /> : <Discover />}
+    <div class="feed-discover">
+      <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("feed")}>Feed</button>
+      <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("discover")}>Discover</button>
+    </div>
+    {feedOrDiscover == "feed" ? <Feed profPic={profPic} /> : <Discover profPic={profPic} />}
     </>
   )
 }

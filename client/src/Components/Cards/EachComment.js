@@ -18,11 +18,11 @@ function EachComment({ text, user_id, name }) {
 
     return (
     <div id='comment'>
-        <div class="comment-header">
-            <img className='user-icon' src={`${image}`} alt='Commenter'></img>
-            <Link to={`/profilepage/${user_id}`}>{name}</Link>
+        <img className='comment-user-icon' src={`${image}`} alt='Commenter'></img>
+        <div class="comment-body">
+          <Link to={`/profilepage/${user_id}`}>{name}</Link>
+          <p>{text}</p>
         </div>
-        <p>{text}</p>
         {user_id === '<%= Session["user_id"] %>' ? <button>Delete Comment</button> : null}
     </div>
   )

@@ -9,7 +9,7 @@ function ProjectCard({ props }) {
     <img src={props.image_url} alt='project' className='project-picture' />
       <div>
         <h2>{props.title}</h2>
-        <span className="project-users">{props.user ? props.user.name : user.name}</span>
+        <span className="project-users">{props.user ? props.user.name : user?.name}</span>
         <p className='proj-p'>{props.description}</p>
         <a href={props.github}>Github</a>
       </div>

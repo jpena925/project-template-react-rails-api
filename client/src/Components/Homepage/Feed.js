@@ -3,7 +3,7 @@ import FeedItem from './FeedItem'
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../../App'
 
-function Feed() {
+function Feed({ profPic }) {
   const [feed, setFeed] = useState(null)
   const user = useContext(UserContext)
 
@@ -15,9 +15,12 @@ function Feed() {
   }, [user])
 
  
+  
+  
+ 
   return (
-    <div>
-    {feed ? feed.map(item => <FeedItem key={uuidv4()} props={item} />) : null}
+    <div id='feed-container'>
+    {feed ? feed.map(item => <FeedItem key={uuidv4()} props={item} id={item.user.id} profPic={profPic} />) : null}
     </div>
   )
 }

@@ -19,7 +19,7 @@ function EachComment({ text, user_id, name }) {
     return (
     <div id='comment'>
         <img className='comment-user-icon' src={`${image}`} alt='Commenter'></img>
-        <div class="comment-body">
+        <div className="comment-body">
           <Link to={`/profilepage/${user_id}`}>{name}</Link>
           <p>{text}</p>
         </div>

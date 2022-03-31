@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 function ProjectDisplay() {
   const [project, setProject] = useState({
     title: '',
-    "image_url": '',
+    "image_url": 'https://www.touchtaiwan.com/images/default.jpg',
     github: '',
     description: '',
     technologies: [],

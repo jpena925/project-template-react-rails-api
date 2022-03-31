@@ -5,7 +5,7 @@ import HomePage from './Components/Homepage/HomePage'
 import ProfilePage from './Components/Profile/ProfilePage'
 import ProjectPage from './Components/Project/ProjectPage'
 import VisitingPage from './Components/Profile/VisitingPage'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useLocation } from "react-router-dom"
 import { useNavigate } from 'react-router';
 import { useEffect, useState, createContext } from 'react'
 import Navbar from './Components/Navbar';
@@ -20,6 +20,7 @@ function App() {
   const [user, setUser] = useState(null)
   const navigate = useNavigate()
   const [profPic, setProfPic] = useState(null)
+  const { state } = useLocation()
 
   useEffect(() => {
     fetch('/me').then(r => {
@@ -39,7 +40,7 @@ function App() {
   function handleLogin(user) {
     setShowNavBar(true)
     setUser(() => user)
-    navigate('./homepage')
+    navigate(state?.path || './homepage')
   }
 
   function handleLogout() {

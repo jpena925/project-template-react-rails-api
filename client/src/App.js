@@ -31,11 +31,22 @@ function App() {
     }) 
   }, [])
 
-  useEffect(() =>  {
-    if (user) {
-      setShowNavBar(true)
-    }
-  }, [user])
+  console.log(user)
+
+  //Rebekah's attempt to save user to localstorage to persist after refresh DON'T DELETE YET PLZ
+  // useEffect(() => {
+  //   setUser(JSON.parse(window.localStorage.getItem('user')));
+  // }, []);
+
+  // useEffect(() => {
+  //   window.localStorage.setItem('user', user);
+  // }, [user]);
+
+  // useEffect(() =>  {
+  //   if (user) {
+  //     setShowNavBar(true)
+  //   }
+  // }, [user])
 
   function handleLogin(user) {
     setShowNavBar(true)

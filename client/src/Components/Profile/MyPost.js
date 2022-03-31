@@ -6,6 +6,7 @@ import { UserContext } from '../../App'
 function MyPost({ profPic }) {
   const user = useContext(UserContext)
 
+
   return (
     <div>
         {user ? user.posts.map(post => <ProfileFeedItem key={uuidv4()} profPic={profPic} props={post}/>) : null}

@@ -6,7 +6,6 @@ import { UserContext } from '../../App'
 function MyProject({profPic}) {
   const user = useContext(UserContext)
 
-
   return (
     <div>
       {user ? user.projects.map(project => <ProfileFeedItem key={uuidv4()} props={project} profPic={profPic}/>) : null}

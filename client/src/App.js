@@ -32,6 +32,8 @@ function App() {
     }) 
   }, [])
 
+  console.log(user)
+
   useEffect(() => {
     if(user) {
       setShowNavBar(true)

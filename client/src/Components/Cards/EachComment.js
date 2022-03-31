@@ -29,7 +29,6 @@ function EachComment({ text, user_id, name, id }) {
           <Link to={`/profilepage/${user_id}`}>{name}</Link>
           <p>{text}</p>
         </div>
-        <p>{text}</p>
         {/* {user_id === user.id ? <button onClick={handleDeleteComment}>Delete Comment</button> : null} */}
     </div>
   )

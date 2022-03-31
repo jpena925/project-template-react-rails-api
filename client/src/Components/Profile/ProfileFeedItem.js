@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Comment from '../Cards/Comment'
 import PostCard from '../Cards/PostCard';
 import ProjectCard from '../Cards/ProjectCard';
@@ -6,7 +6,6 @@ import ProjectCard from '../Cards/ProjectCard';
 
 function ProfileFeedItem({ props, profPic }) {
   const [showComments, setShowComments] = useState(false)
-
 
   const renderComments = props.comments?.map(comment => (
         <Comment 

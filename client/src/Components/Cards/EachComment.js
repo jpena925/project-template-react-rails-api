@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import prof from '../../download (1).png'
-import { UserContext } from '../../App'
+
 
 function EachComment({ text, user_id, name, id }) {
     const [image, setImage] = useState(prof)
-    const user = useContext(UserContext)
 
     useEffect(() => {
       fetch(`/user_images/${user_id}`)
@@ -15,7 +14,7 @@ function EachComment({ text, user_id, name, id }) {
           setImage(data.featured_image.url)
         }
       })
-    },[])
+    },[user_id]) //should user_id be here? change is from warning message
     
 
     // function handleDeleteComment(){

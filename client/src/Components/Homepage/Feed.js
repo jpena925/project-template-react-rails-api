@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import FeedItem from './FeedItem'
 import { v4 as uuidv4 } from 'uuid';
 import { UserContext } from '../../App'
@@ -13,7 +13,7 @@ function Feed({ profPic, feed, setFeed, newPost, newProject }) {
       .then(data => {
         setFeed(data)
     })}
-  }, [user, newPost, newProject])
+  }, [user, newPost, newProject, setFeed]) //added setFeed from warning msg
 
   return (
     <div id='feed-container'>

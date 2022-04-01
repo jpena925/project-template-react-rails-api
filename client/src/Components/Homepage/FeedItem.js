@@ -1,5 +1,4 @@
 import React, { useState} from 'react'
-import Comment from '../Cards/Comment'
 import PostCard from '../Cards/PostCard';
 import ProjectCard from '../Cards/ProjectCard';
 

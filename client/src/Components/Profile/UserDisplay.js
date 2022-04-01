@@ -38,7 +38,7 @@ function UserDisplay({ profPic, setProfPic}) {
         setProfPic(data.featured_image.url)
       }
     })}
-  },[])
+  },[setProfPic, user]) //added from warning msg
 
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function UserDisplay({ profPic, setProfPic}) {
       setBio(data.bio)
       setLinks({...links, linkedin: data.linkedin, github: data.github, blog: data.blog })
     })}
-  }, [user])
+  }, [user, links]) //added from warning msg
 
   function updateBio() {
     fetch(`/users/${user.id}`, {
@@ -77,7 +77,7 @@ function UserDisplay({ profPic, setProfPic}) {
     }
 
     function updateLinks() {
-      fetch('/users/' + `${user.id}`, {
+      fetch(`/users/${user.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           linkedin: links.linkedin,
@@ -157,9 +157,9 @@ function UserDisplay({ profPic, setProfPic}) {
             <input type='url' name='blog' placeholder='Blog'  value={links.blog} onChange={(e) => setLinks({...links, blog: e.target.value})} />
           </form>
         : <ul id='links-ul'>
-            {links.linkedin === '' ? null : <li><AiFillLinkedin /> <a href={links.linkedin} target='_blank' >Linkedin</a></li>}
-            {links.github === '' ? null : <li><BsGithub /> <a href={links.github} target='_blank' >Github</a></li>}
-            {links.blog === '' ? null : <li><SiMedium /> <a href={links.blog} target='_blank' >Blog</a></li>}
+            {links.linkedin === '' ? null : <li><AiFillLinkedin /> <a href={links.linkedin} target='_blank' rel="noreferrer">Linkedin</a></li>}
+            {links.github === '' ? null : <li><BsGithub /> <a href={links.github} target='_blank'rel="noreferrer" >Github</a></li>}
+            {links.blog === '' ? null : <li><SiMedium /> <a href={links.blog} target='_blank' rel="noreferrer">Blog</a></li>}
           </ul> 
         }
         { isEditLinks 

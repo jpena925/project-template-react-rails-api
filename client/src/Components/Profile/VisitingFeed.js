@@ -1,5 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react'
-import PostForm from '../PostForm'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import ProfileFeedItem from './ProfileFeedItem'
 import { v4 as uuidv4 } from 'uuid';
@@ -7,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 function VisitingFeed({profPic}) {
-    const [projectsOrPosts, setProjectsOrPosts] = useState("projects")
     const userID = useParams().id
     const [visitedUser, setVisitedUser] = useState(null)
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import prof from '../../download (1).png'
 import VisitingFeed from './VisitingFeed'
-import ProfileFeed from './ProfileFeed'
 import { UserContext } from '../../App'
 import { AiFillLinkedin } from 'react-icons/ai'
 import { BsGithub } from 'react-icons/bs'
@@ -57,7 +56,7 @@ function VisitingPage() {
             setProfPic(data.featured_image.url)
           }
         })}
-      }, [visitedUser])
+      }, [visitedUser, params]) //added params from warning msg
 
     const handleFollow = () => {
       const newObj = {
@@ -105,9 +104,9 @@ function VisitingPage() {
         </div>
         <div id='links'>
           <h2>Links:</h2>
-          {visitedUser?.linkedin === '' ? null : <p><i><AiFillLinkedin className='link-icon'/> </i><a href={visitedUser?.linkedin} target="_blank">Linkedin</a></p>}
-          {visitedUser?.github === '' ? null : <p><i><BsGithub className='link-icon' /></i> <a href={visitedUser?.github} target="_blank">Github</a></p>}
-          {visitedUser?.blog === '' ? null : <p><i><SiMedium className='link-icon' /></i> <a href={visitedUser?.blog} target="_blank">Blog</a></p>}
+          {visitedUser?.linkedin === '' ? null : <p><i><AiFillLinkedin className='link-icon'/> </i><a href={visitedUser?.linkedin} target="_blank" rel="noreferrer">Linkedin</a></p>}
+          {visitedUser?.github === '' ? null : <p><i><BsGithub className='link-icon' /></i> <a href={visitedUser?.github} target="_blank" rel="noreferrer">Github</a></p>}
+          {visitedUser?.blog === '' ? null : <p><i><SiMedium className='link-icon' /></i> <a href={visitedUser?.blog} target="_blank" rel="noreferrer">Blog</a></p>}
         </div>
       </div>
     </div>

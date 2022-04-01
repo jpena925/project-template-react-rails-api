@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Feed from './Feed'
 import Discover from './Discover'
 import PostForm from '../PostForm.js'
-import { AiOutlineConsoleSql } from 'react-icons/ai'
 
 function HomePage({ profPic, setProfPic }) {
   const [feedOrDiscover, setFeedOrDiscover] = useState("feed")
@@ -19,7 +18,7 @@ function HomePage({ profPic, setProfPic }) {
       <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("feed")}>Feed</button>
       <button type="button" className="feed-btns" onClick={() => setFeedOrDiscover("discover")}>Discover</button>
     </div>
-    {feedOrDiscover == "feed" ? <Feed profPic={profPic} feed={feed} newPost={newPost} newProject={newProject} setFeed={setFeed}/> : <Discover profPic={profPic} />}
+    {feedOrDiscover === "feed" ? <Feed profPic={profPic} feed={feed} newPost={newPost} newProject={newProject} setFeed={setFeed}/> : <Discover profPic={profPic} />}
     </>
   )
 }

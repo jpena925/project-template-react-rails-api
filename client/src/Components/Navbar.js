@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
 import { MdNotificationsActive } from 'react-icons/md'
-import { BsSearch } from 'react-icons/bs'
 import logo from '../Twiddle-Wakka.png'
 import Search from './Search.js'
 
@@ -15,11 +14,6 @@ function Navbar({ onLogout }) {
     navigate('/login')
   }
 
-
-  function handleSubmitSearch(e){
-    e.preventDefault()
-    console.log(e.target.lastChild.value)
-  }
 
   return (
     <header>

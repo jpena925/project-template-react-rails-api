@@ -4,8 +4,6 @@ import logo from '../logo.svg'
 import { BsFillPersonFill } from 'react-icons/bs';
 import { MdEmail,  } from 'react-icons/md'
 import { FaLock } from 'react-icons/fa';
-import { MdAddLink } from 'react-icons/md'
-import { BiImageAdd } from 'react-icons/bi'
 
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true)

@@ -11,11 +11,11 @@ function ProfileFeed({ profPic }) {
     <div className='column1'>
       <PostForm profPic={profPic} />
       {/* TODO: change "feed-btns" classname to be more generic (in HomePage too) */}
-      <div class="feed-discover"> 
+      <div className="feed-discover"> 
         <button type="button" className="feed-btns" onClick={() => setProjectsOrPosts("projects")}>My Projects</button>
         <button type="button" className="feed-btns" onClick={() => setProjectsOrPosts("posts")}>My Posts</button>
       </div>
-      {projectsOrPosts == "projects" ? <MyProject profPic={profPic} /> : <MyPost profPic={profPic} />}
+      {projectsOrPosts === "projects" ? <MyProject profPic={profPic} /> : <MyPost profPic={profPic} />}
     </div>
   )
 }

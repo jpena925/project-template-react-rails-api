@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function ErrorPage() {
-    var username = '<%= Session["UserName"] %>';
 
   return (
       <div>

@@ -21,7 +21,7 @@ function ProjectCard({ props, id, profileProfPic, showComments, setShowComments,
         setProfPic(data.featured_image?.url)
       }
     })}
-  }, [user])
+  }, [user, id]) //added id from warning message
 
   return (
 

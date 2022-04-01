@@ -21,7 +21,7 @@ function PostCard({ props, id, setShowComments, myProfPic, profileProfPic, showC
         setProfPic(data.featured_image?.url)
       }
     })}
-  }, [user, id]) // added id from warning message
+  }, [user]) // warning msg: should add id
 
 
   return (

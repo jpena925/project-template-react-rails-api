@@ -56,7 +56,7 @@ function VisitingPage() {
             setProfPic(data.featured_image.url)
           }
         })}
-      }, [visitedUser, params]) //added params from warning msg
+      }, [visitedUser]) ////warning msg: should add params
 
     const handleFollow = () => {
       const newObj = {

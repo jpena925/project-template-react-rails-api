@@ -38,7 +38,7 @@ function UserDisplay({ profPic, setProfPic}) {
         setProfPic(data.featured_image.url)
       }
     })}
-  },[setProfPic, user]) //added from warning msg
+  },[setProfPic]) //warning msg: should add user
 
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function UserDisplay({ profPic, setProfPic}) {
       setBio(data.bio)
       setLinks({...links, linkedin: data.linkedin, github: data.github, blog: data.blog })
     })}
-  }, [user, links]) //added from warning msg
+  }, [links]) ////warning msg: should add user
 
   function updateBio() {
     fetch(`/users/${user.id}`, {

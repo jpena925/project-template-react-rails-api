@@ -13,7 +13,7 @@ function Feed({ profPic, feed, setFeed, newPost, newProject }) {
       .then(data => {
         setFeed(data)
     })}
-  }, [user, newPost, newProject, setFeed]) //added setFeed from warning msg
+  }, [user, newPost, newProject]) //warning msg: should add setFeed
 
   return (
     <div id='feed-container'>

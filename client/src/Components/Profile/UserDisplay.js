@@ -49,7 +49,7 @@ function UserDisplay({ profPic, setProfPic}) {
       )}
   }, [user])
 
-
+// What is this fetch doing/could we use user from context to get this info or a diff useEffect to seet the links?
   useEffect(() => {
     if(user){
     fetch(`/users/${user.id}`)
@@ -58,7 +58,7 @@ function UserDisplay({ profPic, setProfPic}) {
       setBio(data.bio)
       setLinks({...links, linkedin: data.linkedin, github: data.github, blog: data.blog })
     })}
-  }, [links]) ////warning msg: should add user
+  }, [links]) //warning msg: should add user :: links state useEeffect causes causes infinite loop
 
   function updateBio() {
     fetch(`/users/${user.id}`, {

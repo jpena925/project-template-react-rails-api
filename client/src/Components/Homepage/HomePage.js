@@ -5,11 +5,9 @@ import Discover from './Discover'
 import PostForm from '../PostForm.js'
 import { AiOutlineConsoleSql } from 'react-icons/ai'
 
-function HomePage({ profPic, setProfPic }) {
+function HomePage({ profPic, setProfPic, newPost, newProject, setNewPost, setNewProject }) {
   const [feedOrDiscover, setFeedOrDiscover] = useState("feed")
   const [feed, setFeed] = useState(null)
-  const [newPost, setNewPost] = useState(null)
-  const [newProject, setNewProject] = useState(null) 
 
   
   return (

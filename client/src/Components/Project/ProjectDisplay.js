@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Comment from '../Cards/Comment'
 import { useParams } from 'react-router-dom'
+import { UserContext } from '../../App'
+import prof from '../../download (1).png'
 
 function ProjectDisplay() {
+  const user = useContext(UserContext)
+  const [profPic, setProfPic] = useState()
   const [project, setProject] = useState({
     title: '',
     "image_url": 'https://www.touchtaiwan.com/images/default.jpg',
@@ -18,6 +22,21 @@ function ProjectDisplay() {
     .then(res => res.json())
     .then(project => setProject(() => project))
   }, [id])
+
+  
+
+  useEffect(() => {
+    if(user) {
+    fetch(`/user_images/${user.id}`)
+    .then(res => res.json())
+    .then(data => {
+      if(data.featured_image === null) {
+        setProfPic(prof)
+      } else {
+        setProfPic(data.featured_image?.url)
+      }
+    })}
+  }, [user])
 
   return (
     <div id='project-display'>
@@ -35,7 +54,7 @@ function ProjectDisplay() {
       <img src={`${project['image_url']}`} alt='Project'></img>
       <div id='tech-tags'>{project.technologies.map(tech => <span>#{tech.name}</span>)}</div>
       <p>{project.description}</p>
-      <Comment props={project} />
+      <Comment props={project} myProfPic={profPic} />
     </div>
   )
 }

@@ -18,6 +18,8 @@ export const UserContext = createContext()
 function App() {
   const [showNavBar, setShowNavBar] = useState(false)
   const [user, setUser] = useState(null)
+  const [newPost, setNewPost] = useState(null)
+  const [newProject, setNewProject] = useState(null) 
   const navigate = useNavigate()
   const [profPic, setProfPic] = useState(null)
   const [pageLoaded, setPageLoaded] = useState(false)
@@ -34,8 +36,8 @@ function App() {
         .then(setPageLoaded(true))
       }
     }) 
+  }, [newPost, newProject])
 
-  }, [])
 
 
   useEffect(() => {
@@ -85,11 +87,11 @@ function App() {
           <Routes>
           <Route 
             exact path="/homepage" 
-            element={<HomePage profPic={profPic} setProfPic={setProfPic} />} 
+            element={<HomePage profPic={profPic} setProfPic={setProfPic} newPost={newPost} newProject={newProject} setNewPost={setNewPost} setNewProject={setNewProject} />} 
           />
           <Route 
             exact path="/profilepage" 
-            element={<ProfilePage profPic={profPic} setProfPic={setProfPic} />} 
+            element={<ProfilePage profPic={profPic} setProfPic={setProfPic} setNewPost={setNewPost} setNewProject={setNewProject}/>} 
           />
           <Route 
             exact path="/profilepage/:id" 

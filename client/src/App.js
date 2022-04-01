@@ -11,8 +11,6 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState, createContext } from 'react'
 import Navbar from './Components/Navbar';
 import prof from './download (1).png'
-// Uncomment line for authorizing
-// import RequireAuth from './Components/RequireAuth';
 
 export const UserContext = createContext()
 
@@ -22,28 +20,38 @@ function App() {
   const [user, setUser] = useState(null)
   const navigate = useNavigate()
   const [profPic, setProfPic] = useState(null)
-  const { state } = useLocation()
+  const [pageLoaded, setPageLoaded] = useState(false)
+  const state = useLocation()
 
   useEffect(() => {
     fetch('/me').then(r => {
       if (r.ok) {
         r.json()
         .then(user => setUser(() => user))
+        .then(setPageLoaded(true))
+      } else {
+        r.json()
+        .then(setPageLoaded(true))
       }
     }) 
+
   }, [])
 
 
   useEffect(() => {
     if(user) {
       setShowNavBar(true)
+      setPageLoaded(true)
     }
   }, [user])
 
   function handleLogin(user) {
     setShowNavBar(true)
     setUser(() => user)
-    navigate(state?.path || './homepage')
+    const path = state?.pathname 
+    if (path === '/login') {
+      navigate('/homepage')
+    } 
   }
 
   function handleLogout() {
@@ -65,14 +73,16 @@ function App() {
     })}
   }, [user])
 
+  if (!pageLoaded) {
+    return <h1></h1>
+  }
+
   return (
     <UserContext.Provider value={user}>
       {showNavBar ? <Navbar onLogout={handleLogout} /> : null}
-      <Routes>
-        <Route exact path="/" element={<PreLogin />} />
-        <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
+      
         {user ? 
-          <>
+          <Routes>
           <Route 
             exact path="/homepage" 
             element={<HomePage profPic={profPic} setProfPic={setProfPic} />} 
@@ -93,27 +103,13 @@ function App() {
             exact path="/notfound" 
             element={<ErrorPage user={user} />} 
           />
-         </> : null}
-
-
-          {/* This code will reroute a user that's not logged in to the login page, but doesn't work on refresh  */}
-          {/* <Route 
-            exact path="/homepage" 
-            element={<RequireAuth><HomePage profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
-          />
-          <Route 
-            exact path="/profilepage" 
-            element={<RequireAuth><ProfilePage profPic={profPic} setProfPic={setProfPic} /></RequireAuth>} 
-          />
-          <Route 
-            exact path="/profilepage/:id" 
-            element={<RequireAuth><VisitingPage profPic={profPic} setProfPic={setProfPic}/></RequireAuth>} 
-          />
-          <Route 
-            exact path="/projectpage/:id" 
-            element={<RequireAuth><ProjectPage /></RequireAuth>} 
-          /> */}
-      </Routes>
+         </Routes> 
+         :  
+         <Routes>
+          <Route exact path="/" element={<PreLogin />} />
+          <Route exact path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path='*' element={<Login onLogin={handleLogin} />}/>
+         </Routes>}
     </UserContext.Provider>
   );
 }

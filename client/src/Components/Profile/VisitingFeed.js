@@ -22,7 +22,7 @@ function VisitingFeed({profPic}) {
     const dataMap = data ? data.map(postproj => (<ProfileFeedItem key={uuidv4()} props={postproj} profPic={profPic} />)) : null
     
   return (
-    <div>
+    <div id='visit-feed'>
         {dataMap}
     </div>
   )

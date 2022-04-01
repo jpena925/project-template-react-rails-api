@@ -6,9 +6,11 @@ import { UserContext } from '../../App'
 function MyProject({profPic}) {
   const user = useContext(UserContext)
 
+  const sortedUserProjects = user?.projects.sort((a,b) => b.created_at > a.created_at ? 1: -1)
+
   return (
     <div>
-      {user ? user.projects.map(project => <ProfileFeedItem key={uuidv4()} props={project} profPic={profPic}/>) : null}
+      {user.projects.map(project => <ProfileFeedItem key={uuidv4()} props={project} profPic={profPic}/>)}
     </div>
   )
 }

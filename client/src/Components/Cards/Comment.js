@@ -26,6 +26,7 @@ function Comment({ props, myProfPic }) {
     })
     .then(r => r.json())
     .then(commentToAppendToRender => setNewComment(commentToAppendToRender))
+    setNewCommentText('')
   }
 
   let commentsAfterPost;
@@ -54,7 +55,7 @@ function Comment({ props, myProfPic }) {
             <img src={myProfPic} alt='prof-pic' className='card-pic'/>
             <div className="new-comment">
               <form onSubmit={(e) => handleSubmit(e)}>
-                <input type='text' onChange={(e) => setNewCommentText(e.target.value)} placeholder='Leave a comment!' className='field3'/>
+                <input type='text' value={newCommentText} onChange={(e) => setNewCommentText(e.target.value)} placeholder='Leave a comment!' className='field3'/>
                 {newCommentText === "" ? null : <input type='submit' id='submit' className='comment-submit' />}
               </form>
             </div>

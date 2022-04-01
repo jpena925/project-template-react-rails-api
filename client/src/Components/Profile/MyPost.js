@@ -6,10 +6,11 @@ import { UserContext } from '../../App'
 function MyPost({ profPic }) {
   const user = useContext(UserContext)
 
+  const sortedUserPosts = user?.posts.sort((a,b) => b.created_at > a.created_at ? 1: -1)
 
   return (
     <div>
-        {user ? user.posts.map(post => <ProfileFeedItem key={uuidv4()} profPic={profPic} props={post}/>) : null}
+        {sortedUserPosts.map(post => <ProfileFeedItem key={uuidv4()} profPic={profPic} props={post}/>)}
     </div>
   )
 }

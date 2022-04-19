@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Comment from '../Cards/Comment'
 import { useParams } from 'react-router-dom'
 
-function ProjectDisplay() {
+function ProjectDisplay({myProfPic}) {
   const [project, setProject] = useState({
     title: '',
     "image_url": 'https://www.touchtaiwan.com/images/default.jpg',
@@ -35,7 +35,7 @@ function ProjectDisplay() {
       <img src={`${project['image_url']}`} alt='Project'></img>
       <div id='tech-tags'>{project.technologies.map(tech => <span>#{tech.name}</span>)}</div>
       <p>{project.description}</p>
-      <Comment props={project} />
+      <Comment props={project} myProfPic={myProfPic}/>
     </div>
   )
 }

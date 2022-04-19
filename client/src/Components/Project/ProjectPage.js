@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import ProjectDisplay from './ProjectDisplay'
 
-function ProjectPage() {
-
+function ProjectPage({profPic}) {
+  console.log(profPic)
   return (
     <>
-    <ProjectDisplay />
+    <ProjectDisplay myProfPic={profPic}/>
     </>
   )
 }

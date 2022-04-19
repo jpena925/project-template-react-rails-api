@@ -45,7 +45,7 @@ function Comment({ props, myProfPic }) {
       name={comment.name}
     />
   ))
-
+    console.log(myProfPic)
 
   return (
     <div className='comment-container'>

@@ -33,6 +33,8 @@ function App() {
     }) 
   }, [])
 
+  console.log(user)
+
 
   useEffect(() => {
     if(user) {
@@ -87,7 +89,7 @@ function App() {
           />
           <Route 
             exact path="/projectpage/:id" 
-            element={<ProjectPage />}
+            element={<ProjectPage profPic={profPic}/>}
           />
           <Route 
             exact path="/notfound" 
